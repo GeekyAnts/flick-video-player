@@ -38,6 +38,7 @@ class FlickManager {
   FlickVideoManager _flickVideoManager;
   FlickControlManager _flickControlManager;
   FlickDisplayManager _flickDisplayManager;
+  BuildContext _context;
 
   /// Video end callback, change the video in this callback.
   Function onVideoEnd;
@@ -52,6 +53,11 @@ class FlickManager {
   FlickVideoManager get flickVideoManager => _flickVideoManager;
   FlickDisplayManager get flickDisplayManager => _flickDisplayManager;
   FlickControlManager get flickControlManager => _flickControlManager;
+  BuildContext get context => _context;
+
+  registerContext(BuildContext context) {
+    this._context = context;
+  }
 
   /// Change the video.
   ///

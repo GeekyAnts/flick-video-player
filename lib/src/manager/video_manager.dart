@@ -141,7 +141,7 @@ class FlickVideoManager extends ChangeNotifier {
       }
     }
 
-    if (autoPlay) {
+    if (autoPlay && ModalRoute.of(_flickManager._context).isCurrent) {
       // Start playing the video.
       _flickManager.flickControlManager.play();
     }

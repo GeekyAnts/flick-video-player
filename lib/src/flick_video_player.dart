@@ -69,7 +69,7 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
   @override
   void initState() {
     flickManager = widget.flickManager;
-
+    flickManager.registerContext(context);
     flickManager.flickControlManager.addListener(listener);
     _setSystemUIOverlays();
     _setPreferredOrientation();

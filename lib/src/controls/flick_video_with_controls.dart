@@ -99,37 +99,44 @@ class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
   Widget build(BuildContext context) {
     return IconTheme(
       data: widget.iconThemeData,
-      child: LayoutBuilder(builder: (context, size) {
-        return Container(
-          color: widget.backgroundColor,
-          child: DefaultTextStyle(
-            style: widget.textStyle,
-            child: Stack(
-              children: <Widget>[
-                Center(
-                  child: FlickNativeVideoPlayer(
-                    videoPlayerController: _videoPlayerController,
-                    fit: widget.videoFit,
-                    aspectRatioWhenLoading: widget.aspectRatioWhenLoading,
+      child: LayoutBuilder(
+        builder: (_, size) {
+          final aspectRatio = _videoPlayerController?.value?.aspectRatio ?? 1;
+          final width = size.maxWidth;
+          final height = width / aspectRatio;
+          return Container(
+            width: width,
+            height: height,
+            color: widget.backgroundColor,
+            child: DefaultTextStyle(
+              style: widget.textStyle,
+              child: Stack(
+                children: <Widget>[
+                  Center(
+                    child: FlickNativeVideoPlayer(
+                      videoPlayerController: _videoPlayerController,
+                      fit: widget.videoFit,
+                      aspectRatioWhenLoading: widget.aspectRatioWhenLoading,
+                    ),
                   ),
-                ),
-                Positioned.fill(
-                  child: Stack(
-                    children: <Widget>[
-                      if (_videoPlayerController?.value?.hasError == false &&
-                          _videoPlayerController?.value?.initialized == false)
-                        widget.playerLoadingFallback,
-                      if (_videoPlayerController?.value?.hasError == true)
-                        widget.playerErrorFallback,
-                      widget.controls ?? Container(),
-                    ],
+                  Positioned.fill(
+                    child: Stack(
+                      children: <Widget>[
+                        if (_videoPlayerController?.value?.hasError == false &&
+                            _videoPlayerController?.value?.initialized == false)
+                          widget.playerLoadingFallback,
+                        if (_videoPlayerController?.value?.hasError == true)
+                          widget.playerErrorFallback,
+                        widget.controls ?? Container(),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        );
-      }),
+          );
+        },
+      ),
     );
   }
 }

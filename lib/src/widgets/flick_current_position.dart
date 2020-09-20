@@ -8,11 +8,11 @@ class FlickCurrentPosition extends StatelessWidget {
   const FlickCurrentPosition({
     Key key,
     this.fontSize,
-    this.color,
+    this.colorr,
   }) : super(key: key);
 
   final double fontSize;
-  final Color color;
+  final Color colorr;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class FlickCurrentPosition extends StatelessWidget {
     return Text(
       textPosition,
       style: TextStyle(
-        color: color,
+        color: colorr,
         fontSize: fontSize,
       ),
     );

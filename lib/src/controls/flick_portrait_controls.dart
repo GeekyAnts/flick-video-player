@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flick_video_player/flick_video_player.dart';
+import 'package:flutter/material.dart'; 
+
+import '../../flick_video_player.dart';
 
 /// Default portrait controls.
 class FlickPortraitControls extends StatelessWidget {

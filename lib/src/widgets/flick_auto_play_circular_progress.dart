@@ -1,6 +1,9 @@
-import 'package:flick_video_player/flick_video_player.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; 
 import 'package:provider/provider.dart';
+
+import '../../flick_video_player.dart';
+import 'helpers/auto_play_timer_progress/auto_play_timer_progress.dart';
+import 'helpers/auto_play_timer_progress/auto_play_timer_progress_colors.dart';
 
 /// Circular progress bar which uses autoPlayNextVideo timeout duration.
 class FlickAutoPlayCircularProgress extends StatefulWidget {

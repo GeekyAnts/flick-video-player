@@ -1,7 +1,9 @@
+import 'package:cached_video_player/cached_video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:flick_video_player/flick_video_player.dart';
+
 import 'package:provider/provider.dart';
-import 'package:video_player/video_player.dart';
+
+import '../../flick_video_player.dart';
 
 /// Default Video with Controls.
 ///
@@ -80,11 +82,11 @@ class FlickVideoWithControls extends StatefulWidget {
 }
 
 class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
-  VideoPlayerController _videoPlayerController;
+  CachedVideoPlayerController _videoPlayerController;
 
   @override
   void didChangeDependencies() {
-    VideoPlayerController newController =
+    CachedVideoPlayerController newController =
         Provider.of<FlickVideoManager>(context).videoPlayerController;
     if ((widget.willVideoPlayerControllerChange &&
             _videoPlayerController != newController) ||

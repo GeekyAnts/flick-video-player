@@ -1,6 +1,7 @@
-import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../flick_video_player.dart';
 
 /// Returns a text widget with current position of the video.
 class FlickCurrentPosition extends StatelessWidget {

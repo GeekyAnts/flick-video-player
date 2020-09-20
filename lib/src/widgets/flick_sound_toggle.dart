@@ -1,6 +1,7 @@
-import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../flick_video_player.dart';
 
 /// Show a widget based on the mute/unmute state of the player and toggle the same.
 class FlickSoundToggle extends StatelessWidget {

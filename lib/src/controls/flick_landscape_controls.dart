@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flick_video_player/flick_video_player.dart';
+
+import '../../flick_video_player.dart';
+import 'flick_portrait_controls.dart';
 
 /// Default landscape controls.
 class FlickLandscapeControls extends StatelessWidget {

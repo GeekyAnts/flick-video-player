@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
 FLUTTER_ROOT=F:\FlutterDev\flutter
-FLUTTER_APPLICATION_PATH=F:\Flutter_SandBox\flick-video-player\example
+FLUTTER_APPLICATION_PATH=F:\Flutter_SandBox\Packages\flick-video-player-cached\example
 FLUTTER_TARGET=lib\main.dart
 FLUTTER_BUILD_DIR=build
 SYMROOT=${SOURCE_ROOT}/../build\ios

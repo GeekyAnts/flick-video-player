@@ -30,3 +30,5 @@ export './src/widgets/helpers/auto_play_timer_progress/auto_play_timer_progress.
 export './src/controls/flick_video_with_controls.dart';
 export './src/controls/flick_portrait_controls.dart';
 export './src/controls/flick_landscape_controls.dart';
+
+//test

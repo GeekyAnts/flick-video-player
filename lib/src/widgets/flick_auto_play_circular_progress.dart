@@ -1,4 +1,4 @@
-import 'package:flick_video_player/flick_video_player.dart';
+import 'package:cached_flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -77,7 +77,8 @@ class _FlickAutoPlayCircularProgressState
     if (_videoManager == null) {
       _videoManager = Provider.of<FlickVideoManager>(context);
       controller = AnimationController(
-          vsync: this, duration: _videoManager.nextVideoAutoPlayDuration);
+        duration: _videoManager.nextVideoAutoPlayDuration,
+      );
       controller.forward();
     }
     super.didChangeDependencies();

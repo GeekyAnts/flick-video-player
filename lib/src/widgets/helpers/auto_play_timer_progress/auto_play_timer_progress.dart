@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:flick_video_player/flick_video_player.dart';
+import 'package:cached_flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 
 class FlickAutoPlayTimerProgressPainter extends CustomPainter {

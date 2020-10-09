@@ -1,11 +1,10 @@
-import 'package:example/feed_player/portrait_controls.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
+import 'package:cached_flick_video_player/flick_video_player.dart';
+import '../portrait_controls.dart';
 import './flick_multi_manager.dart';
-import 'package:flick_video_player/flick_video_player.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/flutter_widgets.dart';
-import 'package:video_player/video_player.dart';
 
 class FlickMultiPlayer extends StatefulWidget {
   const FlickMultiPlayer(
@@ -26,7 +25,7 @@ class _FlickMultiPlayerState extends State<FlickMultiPlayer> {
   @override
   void initState() {
     flickManager = FlickManager(
-      videoPlayerController: VideoPlayerController.network(widget.url)
+      videoPlayerController: CachedVideoPlayerController.network(widget.url)
         ..setLooping(true),
       autoPlay: false,
     );

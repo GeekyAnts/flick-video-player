@@ -1,7 +1,7 @@
-import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:cached_flick_video_player/flick_video_player.dart';
 import 'data_manager.dart';
 
 class CustomOrientationControls extends StatelessWidget {

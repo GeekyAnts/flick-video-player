@@ -19,8 +19,8 @@ class FlickVideoManager extends ChangeNotifier {
   TimerCancelCallback _timerCancelCallback;
   Duration _nextVideoAutoPlayDuration;
   Function _videoChangeCallback;
-  VideoPlayerValue _videoPlayerValue;
-  VideoPlayerController _videoPlayerController;
+  CachedVideoPlayerValue _videoPlayerValue;
+  CachedVideoPlayerController _videoPlayerController;
   bool _mounted = true;
 
   /// Auto-play the video after initialization.
@@ -48,10 +48,11 @@ class FlickVideoManager extends ChangeNotifier {
   Duration get nextVideoAutoPlayDuration => _nextVideoAutoPlayDuration;
 
   /// [videoPlayerController.value]
-  VideoPlayerValue get videoPlayerValue => _videoPlayerValue;
+  CachedVideoPlayerValue get videoPlayerValue => _videoPlayerValue;
 
   /// Current playing video controller.
-  VideoPlayerController get videoPlayerController => _videoPlayerController;
+  CachedVideoPlayerController get videoPlayerController =>
+      _videoPlayerController;
 
   /// Error in initializing video.
   bool get errorInVideo => videoPlayerController?.value?.hasError ?? false;
@@ -81,7 +82,7 @@ class FlickVideoManager extends ChangeNotifier {
     _notify();
   }
 
-  _handleChangeVideo(VideoPlayerController newController,
+  _handleChangeVideo(CachedVideoPlayerController newController,
       {Duration videoChangeDuration,
       TimerCancelCallback timerCancelCallback}) async {
     // If videoChangeDuration is not null, start the autoPlayTimer.
@@ -106,10 +107,10 @@ class FlickVideoManager extends ChangeNotifier {
   }
 
   // Immediately change the video.
-  _changeVideo(VideoPlayerController newController) async {
+  _changeVideo(CachedVideoPlayerController newController) async {
     //  Change the videoPlayerController with the new controller,
     // notify the controller change and remove listeners from the old controller.
-    VideoPlayerController oldController = videoPlayerController;
+    CachedVideoPlayerController oldController = videoPlayerController;
     _flickManager.flickControlManager.pause();
     _videoPlayerController = newController;
     oldController?.removeListener(_videoListener);

@@ -2,8 +2,8 @@ library flick_manager;
 
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
 
+import 'package:cached_flick_video_player/flick_video_player.dart';
 part 'video_manager.dart';
 part 'control_manager.dart';
 part 'display_manager.dart';
@@ -14,7 +14,7 @@ class FlickManager {
   FlickManager({
     this.onVideoEnd,
     GetPlayerControlsTimeout getPlayerControlsTimeout,
-    @required VideoPlayerController videoPlayerController,
+    @required CachedVideoPlayerController videoPlayerController,
 
     /// Auto initialize the video.
     bool autoInitialize = true,
@@ -63,7 +63,7 @@ class FlickManager {
   ///
   /// Current playing video will be paused and disposed,
   /// if [videoChangeDuration] is passed video change will happen after that duration.
-  handleChangeVideo(VideoPlayerController videoPlayerController,
+  handleChangeVideo(CachedVideoPlayerController videoPlayerController,
       {Duration videoChangeDuration, TimerCancelCallback timerCancelCallback}) {
     _flickVideoManager._handleChangeVideo(videoPlayerController,
         videoChangeDuration: videoChangeDuration,

@@ -1,12 +1,9 @@
-import 'package:example/animation_player/animation_player.dart';
-import 'package:example/custom_orientation_player/custom_orientation_player.dart';
-import 'package:example/feed_player/feed_player.dart';
-
 import 'package:flutter/material.dart';
-
 import './landscape_player/landscape_player.dart';
-
+import 'animation_player/animation_player.dart';
+import 'custom_orientation_player/custom_orientation_player.dart';
 import 'default_player/default_player.dart';
+import 'feed_player/feed_player.dart';
 
 void main() => runApp(MyApp());
 

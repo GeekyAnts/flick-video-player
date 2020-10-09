@@ -1,11 +1,10 @@
-import 'package:example/custom_orientation_player/controls.dart';
-import 'package:example/utils/mock_data.dart';
-import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_widgets/flutter_widgets.dart';
-import 'package:video_player/video_player.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
+import 'package:cached_flick_video_player/flick_video_player.dart';
+import '../utils/mock_data.dart';
+import 'controls.dart';
 import 'data_manager.dart';
 
 class CustomOrientationPlayer extends StatefulWidget {
@@ -27,7 +26,7 @@ class _CustomOrientationPlayerState extends State<CustomOrientationPlayer> {
   void initState() {
     super.initState();
     flickManager = FlickManager(
-        videoPlayerController: VideoPlayerController.network(
+        videoPlayerController: CachedVideoPlayerController.network(
           urls[0],
         ),
         onVideoEnd: () {
@@ -44,7 +43,7 @@ class _CustomOrientationPlayerState extends State<CustomOrientationPlayer> {
   }
 
   skipToVideo(String url) {
-    flickManager.handleChangeVideo(VideoPlayerController.network(url));
+    flickManager.handleChangeVideo(CachedVideoPlayerController.network(url));
   }
 
   @override

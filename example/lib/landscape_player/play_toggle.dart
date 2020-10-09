@@ -1,4 +1,4 @@
-import 'package:flick_video_player/flick_video_player.dart';
+import 'package:cached_flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -32,7 +32,9 @@ class LandscapePlayToggle extends StatelessWidget {
 
     Widget child = videoManager.isVideoEnded
         ? replayWidget
-        : videoManager.isPlaying ? pauseWidget : playWidget;
+        : videoManager.isPlaying
+            ? pauseWidget
+            : playWidget;
 
     return Material(
       color: Colors.transparent,

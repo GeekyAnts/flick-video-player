@@ -22,7 +22,7 @@ class FlickControlManager extends ChangeNotifier {
   /// Is player mute.
   bool get isMute => _isMute;
 
-  VideoPlayerController get _videoPlayerController =>
+  CachedVideoPlayerController get _videoPlayerController =>
       _flickManager.flickVideoManager.videoPlayerController;
   bool get _isPlaying => _flickManager.flickVideoManager.isPlaying;
 

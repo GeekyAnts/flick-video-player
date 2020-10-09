@@ -1,7 +1,6 @@
 import 'dart:async';
 
-import 'package:flick_video_player/flick_video_player.dart';
-import 'package:video_player/video_player.dart';
+import 'package:cached_flick_video_player/flick_video_player.dart';
 
 class AnimationPlayerDataManager {
   bool inAnimation = false;
@@ -29,7 +28,7 @@ class AnimationPlayerDataManager {
       }
 
       flickManager.handleChangeVideo(
-          VideoPlayerController.network(nextVideoUrl),
+          CachedVideoPlayerController.network(nextVideoUrl),
           videoChangeDuration: duration, timerCancelCallback: (bool playNext) {
         videoChangeTimer.cancel();
         if (playNext) {

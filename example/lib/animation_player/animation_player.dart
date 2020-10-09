@@ -1,12 +1,11 @@
-import 'package:example/animation_player/portrait_video_controls.dart';
-import 'package:example/utils/mock_data.dart';
-import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/flutter_widgets.dart';
-import 'package:video_player/video_player.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
+import 'package:cached_flick_video_player/flick_video_player.dart';
+import '../utils/mock_data.dart';
 import './data_manager.dart';
 import 'landscape_controls.dart';
+import 'portrait_video_controls.dart';
 
 class AnimationPlayer extends StatefulWidget {
   AnimationPlayer({Key key}) : super(key: key);
@@ -26,7 +25,7 @@ class _AnimationPlayerState extends State<AnimationPlayer> {
     super.initState();
     flickManager = FlickManager(
       videoPlayerController:
-          VideoPlayerController.network(items[0]['trailer_url']),
+          CachedVideoPlayerController.network(items[0]['trailer_url']),
       onVideoEnd: () => dataManager.playNextVideo(
         Duration(seconds: 5),
       ),

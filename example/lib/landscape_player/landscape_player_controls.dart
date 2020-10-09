@@ -1,9 +1,10 @@
 import 'dart:ui';
 
-import 'package:example/landscape_player/play_toggle.dart';
-import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'package:cached_flick_video_player/flick_video_player.dart';
+import 'play_toggle.dart';
 
 class LandscapePlayerControls extends StatelessWidget {
   const LandscapePlayerControls(

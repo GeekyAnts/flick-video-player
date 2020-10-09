@@ -1,9 +1,8 @@
-import 'package:example/utils/mock_data.dart';
-import 'package:flick_video_player/flick_video_player.dart';
+import 'package:cached_flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:video_player/video_player.dart';
 
+import '../utils/mock_data.dart';
 import 'landscape_player_controls.dart';
 
 class LandscapePlayer extends StatefulWidget {
@@ -20,8 +19,8 @@ class _LandscapePlayerState extends State<LandscapePlayer> {
   void initState() {
     super.initState();
     flickManager = FlickManager(
-        videoPlayerController:
-            VideoPlayerController.network(mockData["items"][2]["trailer_url"]));
+        videoPlayerController: CachedVideoPlayerController.network(
+            mockData["items"][2]["trailer_url"]));
   }
 
   @override

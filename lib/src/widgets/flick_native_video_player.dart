@@ -25,7 +25,7 @@ class FlickNativeVideoPlayer extends StatelessWidget {
       builder: (context, size) {
         double aspectRatio = (size.maxHeight == double.infinity ||
                 size.maxWidth == double.infinity)
-            ? videoPlayerController?.value?.initialized == true
+            ? videoPlayerController?.value?.isInitialized == true
                 ? videoPlayerController?.value?.aspectRatio
                 : aspectRatioWhenLoading
             : size.maxWidth / size.maxHeight;
@@ -34,7 +34,7 @@ class FlickNativeVideoPlayer extends StatelessWidget {
           aspectRatio: aspectRatio,
           child: FittedBox(
             fit: fit,
-            child: videoPlayerController?.value?.initialized == true
+            child: videoPlayerController?.value?.isInitialized == true
                 ? Container(
                     height: videoHeight,
                     width: videoWidth,

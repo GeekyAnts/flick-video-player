@@ -5,8 +5,8 @@ import 'package:wakelock/wakelock.dart';
 
 class FlickVideoPlayer extends StatefulWidget {
   const FlickVideoPlayer({
-    Key key,
-    @required this.flickManager,
+    Key? key,
+    required this.flickManager,
     this.flickVideoWithControls = const FlickVideoWithControls(
       controls: const FlickPortraitControls(),
     ),
@@ -31,7 +31,7 @@ class FlickVideoPlayer extends StatefulWidget {
   final Widget flickVideoWithControls;
 
   /// Widget to render video and controls in full-screen.
-  final Widget flickVideoWithControlsFullscreen;
+  final Widget? flickVideoWithControlsFullscreen;
 
   /// SystemUIOverlay to show.
   ///
@@ -62,15 +62,15 @@ class FlickVideoPlayer extends StatefulWidget {
 }
 
 class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
-  FlickManager flickManager;
+  FlickManager? flickManager;
   bool _isFullscreen = false;
-  OverlayEntry _overlayEntry;
+  OverlayEntry? _overlayEntry;
 
   @override
   void initState() {
     flickManager = widget.flickManager;
-    flickManager.registerContext(context);
-    flickManager.flickControlManager.addListener(listener);
+    flickManager!.registerContext(context);
+    flickManager!.flickControlManager!.addListener(listener);
     _setSystemUIOverlays();
     _setPreferredOrientation();
 
@@ -83,7 +83,7 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
 
   @override
   void dispose() {
-    flickManager.flickControlManager.removeListener(listener);
+    flickManager!.flickControlManager!.removeListener(listener);
     Wakelock.disable();
     super.dispose();
   }
@@ -91,10 +91,10 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
   // Listener on [FlickControlManager],
   // Pushes the full-screen if [FlickControlManager] is changed to full-screen.
   void listener() async {
-    if (flickManager.flickControlManager.isFullscreen && !_isFullscreen) {
+    if (flickManager!.flickControlManager!.isFullscreen && !_isFullscreen) {
       _switchToFullscreen();
     } else if (_isFullscreen &&
-        !flickManager.flickControlManager.isFullscreen) {
+        !flickManager!.flickControlManager!.isFullscreen) {
       _exitFullscreen();
     }
   }
@@ -120,7 +120,7 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
       );
     });
 
-    Overlay.of(context).insert(_overlayEntry);
+    Overlay.of(context)!.insert(_overlayEntry!);
   }
 
   _exitFullscreen() {
@@ -161,7 +161,7 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
     return WillPopScope(
       onWillPop: () {
         if (_overlayEntry != null) {
-          flickManager.flickControlManager.exitFullscreen();
+          flickManager!.flickControlManager!.exitFullscreen();
           return Future.value(false);
         }
         return Future.value(true);

@@ -5,21 +5,21 @@ import 'package:provider/provider.dart';
 /// Returns a text widget with current position of the video.
 class FlickCurrentPosition extends StatelessWidget {
   const FlickCurrentPosition({
-    Key key,
+    Key? key,
     this.fontSize,
     this.color,
   }) : super(key: key);
 
-  final double fontSize;
-  final Color color;
+  final double? fontSize;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     FlickVideoManager videoManager = Provider.of<FlickVideoManager>(context);
 
-    Duration position = videoManager?.videoPlayerValue?.position;
+    Duration? position = videoManager?.videoPlayerValue?.position;
 
-    String positionInSeconds = position != null
+    String? positionInSeconds = position != null
         ? (position - Duration(minutes: position.inMinutes))
             .inSeconds
             .toString()

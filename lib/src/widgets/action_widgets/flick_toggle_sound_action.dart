@@ -5,12 +5,12 @@ import 'package:provider/provider.dart';
 /// GestureDetector that calls [flickControlManager.toggleMute] onTap of opaque area/child.
 class FlickToggleSoundAction extends StatelessWidget {
   const FlickToggleSoundAction(
-      {Key key,
+      {Key? key,
       this.child,
       this.behavior = HitTestBehavior.opaque,
       this.toggleMute})
       : super(key: key);
-  final Widget child;
+  final Widget? child;
   final HitTestBehavior behavior;
 
   /// Function called onTap of the opaque area/child.
@@ -19,7 +19,7 @@ class FlickToggleSoundAction extends StatelessWidget {
   /// ``` dart
   ///    controlManager.toggleMute();
   /// ```
-  final Function toggleMute;
+  final Function? toggleMute;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class FlickToggleSoundAction extends StatelessWidget {
         behavior: behavior,
         onTap: () {
           if (toggleMute != null) {
-            toggleMute();
+            toggleMute!();
           } else {
             controlManager.toggleMute();
           }

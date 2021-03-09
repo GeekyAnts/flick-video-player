@@ -13,8 +13,8 @@ part 'client_channels.dart';
 class FlickManager {
   FlickManager({
     this.onVideoEnd,
-    GetPlayerControlsTimeout getPlayerControlsTimeout,
-    @required VideoPlayerController videoPlayerController,
+    GetPlayerControlsTimeout? getPlayerControlsTimeout,
+    required VideoPlayerController videoPlayerController,
 
     /// Auto initialize the video.
     bool autoInitialize = true,
@@ -32,16 +32,16 @@ class FlickManager {
     _flickDisplayManager = FlickDisplayManager(
       flickManager: this,
     );
-    _flickVideoManager._handleChangeVideo(videoPlayerController);
+    _flickVideoManager!._handleChangeVideo(videoPlayerController);
   }
 
-  FlickVideoManager _flickVideoManager;
-  FlickControlManager _flickControlManager;
-  FlickDisplayManager _flickDisplayManager;
-  BuildContext _context;
+  FlickVideoManager? _flickVideoManager;
+  FlickControlManager? _flickControlManager;
+  FlickDisplayManager? _flickDisplayManager;
+  BuildContext? _context;
 
   /// Video end callback, change the video in this callback.
-  Function onVideoEnd;
+  Function? onVideoEnd;
 
   /// Player controls auto-hide timeout callback, called when player state changes.
   ///
@@ -50,10 +50,10 @@ class FlickManager {
   /// else timeout is 3 seconds.
   GetPlayerControlsTimeout getPlayerControlsTimeout;
 
-  FlickVideoManager get flickVideoManager => _flickVideoManager;
-  FlickDisplayManager get flickDisplayManager => _flickDisplayManager;
-  FlickControlManager get flickControlManager => _flickControlManager;
-  BuildContext get context => _context;
+  FlickVideoManager? get flickVideoManager => _flickVideoManager;
+  FlickDisplayManager? get flickDisplayManager => _flickDisplayManager;
+  FlickControlManager? get flickControlManager => _flickControlManager;
+  BuildContext? get context => _context;
 
   registerContext(BuildContext context) {
     this._context = context;
@@ -64,38 +64,38 @@ class FlickManager {
   /// Current playing video will be paused and disposed,
   /// if [videoChangeDuration] is passed video change will happen after that duration.
   handleChangeVideo(VideoPlayerController videoPlayerController,
-      {Duration videoChangeDuration, TimerCancelCallback timerCancelCallback}) {
-    _flickVideoManager._handleChangeVideo(videoPlayerController,
+      {Duration? videoChangeDuration, TimerCancelCallback? timerCancelCallback}) {
+    _flickVideoManager!._handleChangeVideo(videoPlayerController,
         videoChangeDuration: videoChangeDuration,
         timerCancelCallback: timerCancelCallback);
   }
 
   _handleToggleFullscreen() {
-    _flickDisplayManager._handleToggleFullscreen();
+    _flickDisplayManager!._handleToggleFullscreen();
   }
 
   _handleVideoEnd() {
     if (onVideoEnd != null) {
-      onVideoEnd();
+      onVideoEnd!();
     }
-    _flickDisplayManager._handleVideoEnd();
+    _flickDisplayManager!._handleVideoEnd();
   }
 
   _handleErrorInVideo() {
-    _flickDisplayManager._handleErrorInVideo();
+    _flickDisplayManager!._handleErrorInVideo();
   }
 
-  _handleVideoSeek({bool forward}) {
+  _handleVideoSeek({required bool forward}) {
     assert(forward != null);
-    _flickDisplayManager._handleVideoSeek(forward: forward);
+    _flickDisplayManager!._handleVideoSeek(forward: forward);
   }
 
   /// Dispose the flick manager.
   ///
   /// This internally disposes all the supporting managers.
   dispose() {
-    _flickControlManager.dispose();
-    _flickDisplayManager.dispose();
-    _flickVideoManager.dispose();
+    _flickControlManager!.dispose();
+    _flickDisplayManager!.dispose();
+    _flickVideoManager!.dispose();
   }
 }

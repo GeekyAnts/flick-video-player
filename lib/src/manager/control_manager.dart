@@ -6,7 +6,7 @@ part of flick_manager;
 /// like change play state, change volume, seek video, enter/exit full-screen.
 class FlickControlManager extends ChangeNotifier {
   FlickControlManager({
-    @required FlickManager flickManager,
+    required FlickManager flickManager,
   }) : _flickManager = flickManager;
 
   final FlickManager _flickManager;
@@ -22,9 +22,9 @@ class FlickControlManager extends ChangeNotifier {
   /// Is player mute.
   bool get isMute => _isMute;
 
-  VideoPlayerController get _videoPlayerController =>
-      _flickManager.flickVideoManager.videoPlayerController;
-  bool get _isPlaying => _flickManager.flickVideoManager.isPlaying;
+  VideoPlayerController? get _videoPlayerController =>
+      _flickManager.flickVideoManager!.videoPlayerController;
+  bool get _isPlaying => _flickManager.flickVideoManager!.isPlaying;
 
   /// Enter full-screen.
   void enterFullscreen() {
@@ -65,12 +65,12 @@ class FlickControlManager extends ChangeNotifier {
     _isAutoPause = false;
 
     // When video changes, the new video has to be muted.
-    if (_isMute && _videoPlayerController.value.volume != 0) {
-      _videoPlayerController.setVolume(0);
+    if (_isMute && _videoPlayerController!.value.volume != 0) {
+      _videoPlayerController!.setVolume(0);
     }
 
-    await _videoPlayerController.play();
-    _flickManager.flickDisplayManager.handleShowPlayerControls();
+    await _videoPlayerController!.play();
+    _flickManager.flickDisplayManager!.handleShowPlayerControls();
     _notify();
   }
 
@@ -87,7 +87,7 @@ class FlickControlManager extends ChangeNotifier {
   /// Pause the video.
   Future<void> pause() async {
     await _videoPlayerController?.pause();
-    _flickManager.flickDisplayManager
+    _flickManager.flickDisplayManager!
         .handleShowPlayerControls(showWithTimeout: false);
     _notify();
   }
@@ -97,25 +97,25 @@ class FlickControlManager extends ChangeNotifier {
   /// Example - on visibility change.
   Future<void> autoPause() async {
     _isAutoPause = true;
-    await _videoPlayerController.pause();
+    await _videoPlayerController!.pause();
   }
 
   /// Seek video to a duration.
   Future<void> seekTo(Duration moment) async {
-    await _videoPlayerController.seekTo(moment);
+    await _videoPlayerController!.seekTo(moment);
   }
 
   /// Seek video forward by the duration.
   Future<void> seekForward(Duration videoSeekDuration) async {
     _flickManager._handleVideoSeek(forward: true);
-    await seekTo(_videoPlayerController.value.position + videoSeekDuration);
+    await seekTo(_videoPlayerController!.value.position + videoSeekDuration);
   }
 
   /// Seek video backward by the duration.
   Future<void> seekBackward(Duration videoSeekDuration) async {
     _flickManager._handleVideoSeek(forward: false);
     await seekTo(
-      _videoPlayerController.value.position - videoSeekDuration,
+      _videoPlayerController!.value.position - videoSeekDuration,
     );
   }
 

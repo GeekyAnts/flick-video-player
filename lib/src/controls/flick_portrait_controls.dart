@@ -4,7 +4,7 @@ import 'package:flick_video_player/flick_video_player.dart';
 /// Default portrait controls.
 class FlickPortraitControls extends StatelessWidget {
   const FlickPortraitControls(
-      {Key key,
+      {Key? key,
       this.iconSize = 20,
       this.fontSize = 12,
       this.progressBarSettings})
@@ -21,7 +21,7 @@ class FlickPortraitControls extends StatelessWidget {
   final double fontSize;
 
   /// [FlickProgressBarSettings] settings.
-  final FlickProgressBarSettings progressBarSettings;
+  final FlickProgressBarSettings? progressBarSettings;
 
   @override
   Widget build(BuildContext context) {

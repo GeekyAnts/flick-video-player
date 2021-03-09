@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 /// Show a widget based on play/pause state of the player and toggle the same.
 class FlickPlayToggle extends StatelessWidget {
   const FlickPlayToggle({
-    Key key,
+    Key? key,
     this.playChild,
     this.pauseChild,
     this.replayChild,
@@ -19,17 +19,17 @@ class FlickPlayToggle extends StatelessWidget {
   /// Widget shown when the video is paused.
   ///
   /// Default - Icon(Icons.play_arrow)
-  final Widget playChild;
+  final Widget? playChild;
 
   /// Widget shown when the video is playing.
   ///
   /// Default - Icon(Icons.pause)
-  final Widget pauseChild;
+  final Widget? pauseChild;
 
   /// Widget shown when the video is ended.
   ///
   /// Default - Icon(Icons.replay)
-  final Widget replayChild;
+  final Widget? replayChild;
 
   /// Function called onTap of visible child.
   ///
@@ -39,19 +39,19 @@ class FlickPlayToggle extends StatelessWidget {
   ///     ? controlManager.replay()
   ///     : controlManager.togglePlay();
   /// ```
-  final Function togglePlay;
+  final Function? togglePlay;
 
   /// Size for the default icons.
-  final double size;
+  final double? size;
 
   /// Color for the default icons.
-  final Color color;
+  final Color? color;
 
   /// Padding around the visible child.
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   /// Decoration around the visible child.
-  final Decoration decoration;
+  final Decoration? decoration;
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +86,7 @@ class FlickPlayToggle extends StatelessWidget {
         key: key,
         onTap: () {
           if (togglePlay != null) {
-            togglePlay();
+            togglePlay!();
           } else {
             videoManager.isVideoEnded
                 ? controlManager.replay()

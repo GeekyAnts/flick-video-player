@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
 
 typedef Paint GetProgressBarBackgroundPaint({
-  double width,
-  double height,
-  double handleRadius,
+  double? width,
+  double? height,
+  double? handleRadius,
 });
 
 typedef Paint GetProgressBarPlayedPaint({
-  double width,
-  double height,
-  double playedPart,
-  double handleRadius,
+  double? width,
+  double? height,
+  double? playedPart,
+  double? handleRadius,
 });
 
 typedef Paint GetProgressBarBufferedPaint({
-  double width,
-  double height,
-  double playedPart,
-  double handleRadius,
-  double bufferedStart,
-  double bufferedEnd,
+  double? width,
+  double? height,
+  double? playedPart,
+  double? handleRadius,
+  double? bufferedStart,
+  double? bufferedEnd,
 });
 
 typedef Paint GetProgressBarHandlePaint({
-  double width,
-  double height,
-  double playedPart,
-  double handleRadius,
+  double? width,
+  double? height,
+  double? playedPart,
+  double? handleRadius,
 });
 
 class FlickProgressBarSettings {
@@ -60,16 +60,16 @@ class FlickProgressBarSettings {
   final Color backgroundColor;
 
   /// Paint for played area.
-  final GetProgressBarPlayedPaint getPlayedPaint;
+  final GetProgressBarPlayedPaint? getPlayedPaint;
 
   /// Paint for buffered area.
-  final GetProgressBarBufferedPaint getBufferedPaint;
+  final GetProgressBarBufferedPaint? getBufferedPaint;
 
   /// Paint for handle.
-  final GetProgressBarHandlePaint getHandlePaint;
+  final GetProgressBarHandlePaint? getHandlePaint;
 
   /// Paint for background area.
-  final GetProgressBarBackgroundPaint getBackgroundPaint;
+  final GetProgressBarBackgroundPaint? getBackgroundPaint;
 
   /// Height of the progress bar.
   final double height;

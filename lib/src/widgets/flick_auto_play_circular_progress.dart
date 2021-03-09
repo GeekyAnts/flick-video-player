@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 /// Circular progress bar which uses autoPlayNextVideo timeout duration.
 class FlickAutoPlayCircularProgress extends StatefulWidget {
   const FlickAutoPlayCircularProgress({
-    Key key,
+    Key? key,
     this.colors,
     this.width = 50,
     this.height = 50,
@@ -23,7 +23,7 @@ class FlickAutoPlayCircularProgress extends StatefulWidget {
   }) : super(key: key);
 
   /// Colors for progress indicator.
-  final FlickAutoPlayTimerProgressColors colors;
+  final FlickAutoPlayTimerProgressColors? colors;
 
   /// Width of the progress indicator.
   final double width;
@@ -44,12 +44,12 @@ class FlickAutoPlayCircularProgress extends StatefulWidget {
   /// Called on tap of [playChild].
   ///
   /// If this function is not null, then default onTap action of [playChild] is not called.
-  final Function playNextVideo;
+  final Function? playNextVideo;
 
   /// Called on tap of [cancelChild].
   ///
   /// If this function is not null, then default onTap action of [cancelChild] is not called.
-  final Function cancelAutoPlayTimer;
+  final Function? cancelAutoPlayTimer;
 
   @override
   _FlickAutoPlayCircularProgressState createState() =>
@@ -58,8 +58,8 @@ class FlickAutoPlayCircularProgress extends StatefulWidget {
 
 class _FlickAutoPlayCircularProgressState
     extends State<FlickAutoPlayCircularProgress> with TickerProviderStateMixin {
-  AnimationController controller;
-  FlickVideoManager _videoManager;
+  AnimationController? controller;
+  FlickVideoManager? _videoManager;
 
   @override
   void initState() {
@@ -68,7 +68,7 @@ class _FlickAutoPlayCircularProgressState
 
   @override
   void dispose() {
-    controller.dispose();
+    controller!.dispose();
     super.dispose();
   }
 
@@ -77,8 +77,8 @@ class _FlickAutoPlayCircularProgressState
     if (_videoManager == null) {
       _videoManager = Provider.of<FlickVideoManager>(context);
       controller = AnimationController(
-          vsync: this, duration: _videoManager.nextVideoAutoPlayDuration);
-      controller.forward();
+          vsync: this, duration: _videoManager!.nextVideoAutoPlayDuration);
+      controller!.forward();
     }
     super.didChangeDependencies();
   }
@@ -86,7 +86,7 @@ class _FlickAutoPlayCircularProgressState
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        animation: controller,
+        animation: controller!,
         builder: (context, child) {
           return Container(
             child: Column(
@@ -104,9 +104,9 @@ class _FlickAutoPlayCircularProgressState
                       child: GestureDetector(
                         onTap: () {
                           if (widget.playNextVideo != null) {
-                            widget.playNextVideo();
+                            widget.playNextVideo!();
                           } else {
-                            _videoManager.cancelVideoAutoPlayTimer(
+                            _videoManager!.cancelVideoAutoPlayTimer(
                                 playNext: true);
                           }
                         },
@@ -118,9 +118,9 @@ class _FlickAutoPlayCircularProgressState
                 GestureDetector(
                   onTap: () {
                     if (widget.cancelAutoPlayTimer != null) {
-                      widget.cancelAutoPlayTimer();
+                      widget.cancelAutoPlayTimer!();
                     } else {
-                      _videoManager.cancelVideoAutoPlayTimer();
+                      _videoManager!.cancelVideoAutoPlayTimer();
                     }
                   },
                   child: widget.cancelChild,

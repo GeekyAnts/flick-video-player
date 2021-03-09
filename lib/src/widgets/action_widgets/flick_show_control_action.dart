@@ -5,13 +5,13 @@ import 'package:provider/provider.dart';
 /// GestureDetector that calls [flickDisplayManager.handleVideoTap] onTap of opaque area/child.
 class FlickShowControlsAction extends StatelessWidget {
   const FlickShowControlsAction(
-      {Key key,
+      {Key? key,
       this.child,
       this.behavior = HitTestBehavior.opaque,
       this.handleVideoTap})
       : super(key: key);
 
-  final Widget child;
+  final Widget? child;
   final HitTestBehavior behavior;
 
   /// Function called onTap of the opaque area/child.
@@ -20,7 +20,7 @@ class FlickShowControlsAction extends StatelessWidget {
   /// ``` dart
   ///    displayManager.handleVideoTap();
   /// ```
-  final Function handleVideoTap;
+  final Function? handleVideoTap;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class FlickShowControlsAction extends StatelessWidget {
         behavior: behavior,
         onTap: () {
           if (handleVideoTap != null) {
-            handleVideoTap();
+            handleVideoTap!();
           } else {
             displayManager.handleVideoTap();
           }

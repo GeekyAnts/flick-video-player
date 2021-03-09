@@ -5,25 +5,25 @@ import 'package:provider/provider.dart';
 /// Returns a text widget with left duration of the video.
 class FlickLeftDuration extends StatelessWidget {
   const FlickLeftDuration({
-    Key key,
+    Key? key,
     this.fontSize,
     this.color,
   }) : super(key: key);
 
-  final double fontSize;
-  final Color color;
+  final double? fontSize;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     FlickVideoManager videoManager = Provider.of<FlickVideoManager>(context);
 
-    Duration duration = videoManager?.videoPlayerValue?.duration;
-    Duration position = videoManager?.videoPlayerValue?.position;
+    Duration? duration = videoManager?.videoPlayerValue?.duration;
+    Duration? position = videoManager?.videoPlayerValue?.position;
 
-    Duration durationLeft =
+    Duration? durationLeft =
         position != null && duration != null ? duration - position : null;
 
-    String durationLeftInSeconds = durationLeft != null
+    String? durationLeftInSeconds = durationLeft != null
         ? (durationLeft - Duration(minutes: durationLeft.inMinutes))
             .inSeconds
             .toString()

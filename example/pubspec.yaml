@@ -22,8 +22,8 @@ dependencies:
   flutter_widgets: ^0.1.12
   flick_video_player:
     path: '../'
-  video_player: 0.10.8+1
-  provider: 4.0.5
+  video_player: ^2.0.0
+  provider: ^5.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

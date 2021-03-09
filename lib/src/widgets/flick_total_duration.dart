@@ -5,21 +5,21 @@ import 'package:provider/provider.dart';
 /// Returns a text widget with total duration of the video.
 class FlickTotalDuration extends StatelessWidget {
   const FlickTotalDuration({
-    Key key,
+    Key? key,
     this.fontSize,
     this.color,
   }) : super(key: key);
 
-  final double fontSize;
-  final Color color;
+  final double? fontSize;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     FlickVideoManager videoManager = Provider.of<FlickVideoManager>(context);
 
-    Duration duration = videoManager?.videoPlayerValue?.duration;
+    Duration? duration = videoManager?.videoPlayerValue?.duration;
 
-    String durationInSeconds = duration != null
+    String? durationInSeconds = duration != null
         ? (duration - Duration(minutes: duration.inMinutes))
             .inSeconds
             .toString()

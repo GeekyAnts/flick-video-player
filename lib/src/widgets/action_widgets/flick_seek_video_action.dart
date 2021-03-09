@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 /// Renders two GestureDetector inside a row, the first detector is responsible to seekBackward and the second detector is responsible to seekForward.
 class FlickSeekVideoAction extends StatelessWidget {
   const FlickSeekVideoAction({
-    Key key,
+    Key? key,
     this.child,
     this.forwardSeekIcon = const Icon(Icons.fast_forward),
     this.backwardSeekIcon = const Icon(Icons.fast_rewind),
@@ -17,7 +17,7 @@ class FlickSeekVideoAction extends StatelessWidget {
   }) : super(key: key);
 
   /// Widget to be stacked above this action.
-  final Widget child;
+  final Widget? child;
 
   /// Widget to be shown when user forwardSeek the video.
   ///
@@ -35,7 +35,7 @@ class FlickSeekVideoAction extends StatelessWidget {
   /// ``` dart
   ///    controlManager.seekForward(Duration(seconds: 10));
   /// ```
-  final Function seekForward;
+  final Function? seekForward;
 
   /// Function called onTap of [backwardSeekIcon].
   ///
@@ -43,7 +43,7 @@ class FlickSeekVideoAction extends StatelessWidget {
   /// ``` dart
   ///     controlManager.seekBackward(Duration(seconds: 10));
   /// ```
-  final Function seekBackward;
+  final Function? seekBackward;
 
   /// Duration by which video will be seek.
   final Duration duration;
@@ -68,7 +68,7 @@ class FlickSeekVideoAction extends StatelessWidget {
                 behavior: HitTestBehavior.opaque,
                 onDoubleTap: () {
                   if (seekBackward != null) {
-                    seekBackward();
+                    seekBackward!();
                   } else {
                     controlManager.seekBackward(duration);
                   }
@@ -97,7 +97,7 @@ class FlickSeekVideoAction extends StatelessWidget {
                 behavior: HitTestBehavior.opaque,
                 onDoubleTap: () {
                   if (seekForward != null) {
-                    seekForward();
+                    seekForward!();
                   } else {
                     controlManager.seekForward(duration);
                   }
@@ -124,7 +124,7 @@ class FlickSeekVideoAction extends StatelessWidget {
             )
           ],
         ),
-        if (child != null) child,
+        if (child != null) child!,
       ],
     );
   }

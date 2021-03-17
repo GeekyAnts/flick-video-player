@@ -105,9 +105,9 @@
     },
     {
       "name": "provider",
-      "rootUri": "file:///Users/ruchika/.pub-cache/hosted/pub.dartlang.org/provider-4.0.5",
+      "rootUri": "file:///Users/ruchika/.pub-cache/hosted/pub.dartlang.org/provider-5.0.0",
       "packageUri": "lib/",
-      "languageVersion": "2.2"
+      "languageVersion": "2.12"
     },
     {
       "name": "sky_engine",
@@ -200,7 +200,7 @@
       "languageVersion": "2.1"
     }
   ],
-  "generated": "2021-03-17T09:58:40.103978Z",
+  "generated": "2021-03-17T10:38:56.598351Z",
   "generator": "pub",
   "generatorVersion": "2.13.0-68.0.dev"
 }

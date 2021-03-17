@@ -1,4 +1,0 @@
-#Wed Mar 17 15:35:45 IST 2021
-base.0=/Users/ruchika/Sites/projects/flick-video-player/example/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex

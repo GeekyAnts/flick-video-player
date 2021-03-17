@@ -2,7 +2,7 @@ import 'package:example/animation_player/portrait_video_controls.dart';
 import 'package:example/utils/mock_data.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widgets/flutter_widgets.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 import 'package:video_player/video_player.dart';
 
 import './data_manager.dart';

@@ -78,7 +78,7 @@ class FlickFullScreenToggle extends StatelessWidget {
       child: Container(
         padding: padding,
         decoration: decoration,
-        child: child,
+        
       ),
     );
   }

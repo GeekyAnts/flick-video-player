@@ -20,7 +20,7 @@ class _AnimationPlayerState extends State<AnimationPlayer> {
   AnimationPlayerDataManager dataManager;
   List items = mockData['items'];
   bool _pauseOnTap = true;
-
+  double playBackSpeed = 1.0;
   @override
   void initState() {
     super.initState();
@@ -107,6 +107,30 @@ class _AnimationPlayerState extends State<AnimationPlayer> {
                     )
                   ],
                 ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Text('Playback speed -- '),
+                Row(
+                  children: [
+                    Slider(
+                      value: playBackSpeed,
+                      onChanged: (val) {},
+                      onChangeEnd: (val) {
+                        flickManager.flickVideoManager.videoPlayerController
+                            .setPlaybackSpeed(val);
+                        setState(() {
+                          playBackSpeed = val;
+                        });
+                      },
+                      min: 0,
+                      max: 2,
+                    ),
+                    Text(playBackSpeed.toStringAsFixed(2).toString()),
+                  ],
+                )
               ],
             ),
           ],

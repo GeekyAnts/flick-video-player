@@ -143,6 +143,10 @@ class FlickControlManager extends ChangeNotifier {
     _notify();
   }
 
+  void setPlaybackSpeed(double speed) {
+    _videoPlayerController.setPlaybackSpeed(speed);
+  }
+
   _notify() {
     if (_mounted) {
       notifyListeners();

@@ -125,7 +125,7 @@ class _AnimationPlayerState extends State<AnimationPlayer> {
                           playBackSpeed = val;
                         });
                       },
-                      min: 0,
+                      min: 0.25,
                       max: 2,
                     ),
                     Text(playBackSpeed.toStringAsFixed(2).toString()),

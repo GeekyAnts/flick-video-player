@@ -143,8 +143,26 @@ class FlickControlManager extends ChangeNotifier {
     _notify();
   }
 
-  void setPlaybackSpeed(double speed) {
-    _videoPlayerController.setPlaybackSpeed(speed);
+  /// Sets the playback speed of [this].
+  ///
+  /// [speed] indicates a speed value with different platforms accepting
+  /// different ranges for speed values. The [speed] must be greater than 0.
+  ///
+  /// The values will be handled as follows:
+  /// * On web, the audio will be muted at some speed when the browser
+  ///   determines that the sound would not be useful anymore. For example,
+  ///   "Gecko mutes the sound outside the range `0.25` to `5.0`" (see https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/playbackRate).
+  /// * On Android, some very extreme speeds will not be played back accurately.
+  ///   Instead, your video will still be played back, but the speed will be
+  ///   clamped by ExoPlayer (but the values are allowed by the player, like on
+  ///   web).
+  /// * On iOS, you can sometimes not go above `2.0` playback speed on a video.
+  ///   An error will be thrown for if the option is unsupported. It is also
+  ///   possible that your specific video cannot be slowed down, in which case
+  ///   the plugin also reports errors.
+  Future<void> setPlaybackSpeed(double speed) async {
+    await _videoPlayerController.setPlaybackSpeed(speed);
+    notifyListeners();
   }
 
   _notify() {

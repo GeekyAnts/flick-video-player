@@ -11,6 +11,7 @@ The [video_player](https://pub.dev/packages/video_player) plugin gives low level
 * Custom animations.
 * Custom controls for normal and fullscreen.
 * Auto-play list of videos.
+* Change playback speed.
 
 # Demo
 

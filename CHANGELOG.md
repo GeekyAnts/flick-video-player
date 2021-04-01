@@ -9,3 +9,7 @@ Initial version of FlickVideoPlayer.
 ## 0.2.0
 
 Upgraded the packages to make it compatible with Flutter 2.0.0.
+
+## 0.2.1
+
+Added `setPlaybackSpeed` method in `FlickControlManager` to change video playback speed with `FlickSetPlayBack` UI helper widget.

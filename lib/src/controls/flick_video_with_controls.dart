@@ -116,10 +116,10 @@ class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
                 Positioned.fill(
                   child: Stack(
                     children: <Widget>[
-                      if (_videoPlayerController?.value?.hasError == false &&
-                          _videoPlayerController?.value?.isInitialized == false)
+                      if (_videoPlayerController?.value.hasError == false &&
+                          _videoPlayerController?.value.isInitialized == false)
                         widget.playerLoadingFallback,
-                      if (_videoPlayerController?.value?.hasError == true)
+                      if (_videoPlayerController?.value.hasError == true)
                         widget.playerErrorFallback,
                       widget.controls ?? Container(),
                     ],

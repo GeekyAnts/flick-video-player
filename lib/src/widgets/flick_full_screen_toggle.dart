@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 /// Show a widget based on the full-screen state of the player and toggle the same.
 class FlickFullScreenToggle extends StatelessWidget {
   const FlickFullScreenToggle(
-      {Key key,
+      {Key? key,
       this.enterFullScreenChild,
       this.exitFullScreenChild,
       this.toggleFullscreen,
@@ -18,12 +18,12 @@ class FlickFullScreenToggle extends StatelessWidget {
   /// Widget shown when player is not in full-screen.
   ///
   /// Default - [Icon(Icons.fullscreen)]
-  final Widget enterFullScreenChild;
+  final Widget? enterFullScreenChild;
 
   /// Widget shown when player is in full-screen.
   ///
   ///  Default - [Icon(Icons.fullscreen_exit)]
-  final Widget exitFullScreenChild;
+  final Widget? exitFullScreenChild;
 
   /// Function called onTap of the visible child.
   ///
@@ -31,19 +31,19 @@ class FlickFullScreenToggle extends StatelessWidget {
   /// ```dart
   ///     controlManager.toggleFullscreen();
   /// ```
-  final Function toggleFullscreen;
+  final Function? toggleFullscreen;
 
   /// Size for the default icons.
-  final double size;
+  final double? size;
 
   /// Color for the default icons.
-  final Color color;
+  final Color? color;
 
   /// Padding around the visible child.
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   /// Decoration around the visible child.
-  final Decoration decoration;
+  final Decoration? decoration;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class FlickFullScreenToggle extends StatelessWidget {
       key: key,
       onTap: () {
         if (toggleFullscreen != null) {
-          toggleFullscreen();
+          toggleFullscreen!();
         } else {
           controlManager.toggleFullscreen();
         }

@@ -5,7 +5,7 @@ import './multi_manager/flick_multi_player.dart';
 import '../utils/mock_data.dart';
 
 class FeedPlayer extends StatefulWidget {
-  FeedPlayer({Key key}) : super(key: key);
+  FeedPlayer({Key? key}) : super(key: key);
 
   @override
   _FeedPlayerState createState() => _FeedPlayerState();
@@ -14,7 +14,7 @@ class FeedPlayer extends StatefulWidget {
 class _FeedPlayerState extends State<FeedPlayer> {
   List items = mockData['items'];
 
-  FlickMultiManager flickMultiManager;
+  late FlickMultiManager flickMultiManager;
 
   @override
   void initState() {

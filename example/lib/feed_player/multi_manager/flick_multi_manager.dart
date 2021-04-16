@@ -2,15 +2,15 @@ import 'package:flick_video_player/flick_video_player.dart';
 
 class FlickMultiManager {
   List<FlickManager> _flickManagers = [];
-  FlickManager _activeManager;
+  FlickManager? _activeManager;
   bool _isMute = false;
 
   init(FlickManager flickManager) {
     _flickManagers.add(flickManager);
     if (_isMute) {
-      flickManager?.flickControlManager?.mute();
+      flickManager.flickControlManager?.mute();
     } else {
-      flickManager?.flickControlManager?.unmute();
+      flickManager.flickControlManager?.unmute();
     }
     if (_flickManagers.length == 1) {
       play(flickManager);
@@ -38,7 +38,7 @@ class FlickMultiManager {
     _activeManager?.flickControlManager?.pause();
   }
 
-  play([FlickManager flickManager]) {
+  play([FlickManager? flickManager]) {
     if (flickManager != null) {
       _activeManager?.flickControlManager?.pause();
       _activeManager = flickManager;
@@ -55,11 +55,12 @@ class FlickMultiManager {
 
   toggleMute() {
     _activeManager?.flickControlManager?.toggleMute();
-    _isMute = _activeManager?.flickControlManager?.isMute;
+    _isMute = _activeManager?.flickControlManager?.isMute ?? false;
     if (_isMute) {
-      _flickManagers.forEach((manager) => manager.flickControlManager.mute());
+      _flickManagers.forEach((manager) => manager.flickControlManager?.mute());
     } else {
-      _flickManagers.forEach((manager) => manager.flickControlManager.unmute());
+      _flickManagers
+          .forEach((manager) => manager.flickControlManager?.unmute());
     }
   }
 }

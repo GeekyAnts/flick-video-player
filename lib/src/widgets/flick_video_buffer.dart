@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 /// Shows a widget when the video is buffering.
 class FlickVideoBuffer extends StatelessWidget {
   const FlickVideoBuffer({
-    Key key,
+    Key? key,
     this.bufferingChild = const CircularProgressIndicator(),
     this.child,
   }) : super(key: key);
@@ -14,7 +14,7 @@ class FlickVideoBuffer extends StatelessWidget {
   final Widget bufferingChild;
 
   /// Widget to be shown when the video is not buffering.
-  final Widget child;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {

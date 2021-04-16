@@ -4,14 +4,14 @@ part of flick_manager;
 class FlickDisplayManager extends ChangeNotifier {
   /// Manages display related properties like auto-hide controls.
   FlickDisplayManager({
-    FlickManager flickManager,
+    FlickManager? flickManager,
   }) : _flickManager = flickManager {
     handleShowPlayerControls();
   }
 
-  final FlickManager _flickManager;
+  final FlickManager? _flickManager;
   bool _mounted = true;
-  Timer _showPlayerControlsTimer;
+  Timer? _showPlayerControlsTimer;
   bool _showPlayerControls = true;
   bool _showForwardSeek = false;
   bool _showBackwardSeek = false;
@@ -55,12 +55,12 @@ class FlickDisplayManager extends ChangeNotifier {
       // Timer duration fetched through channel, passing the current player information.
 
       _showPlayerControlsTimer = Timer(
-          _flickManager.getPlayerControlsTimeout(
-            errorInVideo: _flickManager.flickVideoManager.errorInVideo,
+          _flickManager!.getPlayerControlsTimeout(
+            errorInVideo: _flickManager!.flickVideoManager!.errorInVideo,
             isVideoInitialized:
-                _flickManager.flickVideoManager.isVideoInitialized,
-            isPlaying: _flickManager.flickVideoManager.isPlaying,
-            isVideoEnded: _flickManager.flickVideoManager.isVideoEnded,
+                _flickManager!.flickVideoManager!.isVideoInitialized,
+            isPlaying: _flickManager!.flickVideoManager!.isPlaying,
+            isVideoEnded: _flickManager!.flickVideoManager!.isVideoEnded,
           ), () {
         _showPlayerControls = false;
         _notify();
@@ -70,7 +70,7 @@ class FlickDisplayManager extends ChangeNotifier {
 
   // Called when user calls seekForward or seekBackward
   // on the controlManager.
-  _handleVideoSeek({bool forward}) {
+  _handleVideoSeek({required bool forward}) {
     if (forward) {
       _showForwardSeek = true;
     } else {

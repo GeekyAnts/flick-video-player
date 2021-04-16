@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 /// Show a widget based on the full-screen state of the player and toggle the same.
 class FlickSetPlayBack extends StatelessWidget {
   const FlickSetPlayBack(
-      {Key key,
+      {Key? key,
       this.playBackChild,
       this.setPlayBack,
       this.speed = 1.0,
@@ -18,7 +18,7 @@ class FlickSetPlayBack extends StatelessWidget {
   /// Widget shown when player is not in full-screen.
   ///
   /// Default - [Icon(Icons.fullscreen)]
-  final Widget playBackChild;
+  final Widget? playBackChild;
 
   /// Function called onTap of the visible child.
   ///
@@ -26,22 +26,22 @@ class FlickSetPlayBack extends StatelessWidget {
   /// ```dart
   ///     controlManager.toggleFullscreen();
   /// ```
-  final Function setPlayBack;
+  final Function? setPlayBack;
 
   /// Speed value of 2.0, your video will play at 2x the regular playback speed and so on.
   final double speed;
 
   /// Size for the default icons.
-  final double size;
+  final double? size;
 
   /// Color for the default icons.
-  final Color color;
+  final Color? color;
 
   /// Padding around the visible child.
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   /// Decoration around the visible child.
-  final Decoration decoration;
+  final Decoration? decoration;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class FlickSetPlayBack extends StatelessWidget {
       key: key,
       onTap: () {
         if (setPlayBack != null) {
-          setPlayBack();
+          setPlayBack!();
         } else {
           if (speed != 1.0) controlManager.setPlaybackSpeed(speed);
         }

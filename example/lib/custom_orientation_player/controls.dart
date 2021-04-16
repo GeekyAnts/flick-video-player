@@ -6,11 +6,11 @@ import 'data_manager.dart';
 
 class CustomOrientationControls extends StatelessWidget {
   const CustomOrientationControls(
-      {Key key, this.iconSize = 20, this.fontSize = 12, this.dataManager})
+      {Key? key, this.iconSize = 20, this.fontSize = 12, this.dataManager})
       : super(key: key);
   final double iconSize;
   final double fontSize;
-  final DataManager dataManager;
+  final DataManager? dataManager;
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +43,11 @@ class CustomOrientationControls extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
                                 onTap: () {
-                                  dataManager.skipToPreviousVideo();
+                                  dataManager!.skipToPreviousVideo();
                                 },
                                 child: Icon(
                                   Icons.skip_previous,
-                                  color: dataManager.hasPreviousVideo()
+                                  color: dataManager!.hasPreviousVideo()
                                       ? Colors.white
                                       : Colors.white38,
                                   size: 35,
@@ -62,11 +62,11 @@ class CustomOrientationControls extends StatelessWidget {
                               padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
                                 onTap: () {
-                                  dataManager.skipToNextVideo();
+                                  dataManager!.skipToNextVideo();
                                 },
                                 child: Icon(
                                   Icons.skip_next,
-                                  color: dataManager.hasNextVideo()
+                                  color: dataManager!.hasNextVideo()
                                       ? Colors.white
                                       : Colors.white38,
                                   size: 35,

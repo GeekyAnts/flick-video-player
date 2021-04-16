@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 
 class LandscapePlayerControls extends StatelessWidget {
   const LandscapePlayerControls(
-      {Key key, this.iconSize = 20, this.fontSize = 12})
+      {Key? key, this.iconSize = 20, this.fontSize = 12})
       : super(key: key);
   final double iconSize;
   final double fontSize;
@@ -66,11 +66,10 @@ class LandscapePlayerControls extends StatelessWidget {
                               backgroundColor: Colors.white24,
                               bufferedColor: Colors.white38,
                               getPlayedPaint: (
-                                  {double handleRadius,
-                                  double height,
-                                  double playedPart,
-                                  double,
-                                  width}) {
+                                  {double? handleRadius,
+                                  double? height,
+                                  double? playedPart,
+                                  double? width}) {
                                 return Paint()
                                   ..shader = LinearGradient(colors: [
                                     Color.fromRGBO(108, 165, 242, 1),
@@ -81,16 +80,15 @@ class LandscapePlayerControls extends StatelessWidget {
                                   ]).createShader(
                                     Rect.fromPoints(
                                       Offset(0, 0),
-                                      Offset(width, 0),
+                                      Offset(width!, 0),
                                     ),
                                   );
                               },
                               getHandlePaint: (
-                                  {double handleRadius,
-                                  double height,
-                                  double playedPart,
-                                  double,
-                                  width}) {
+                                  {double? handleRadius,
+                                  double? height,
+                                  double? playedPart,
+                                  double? width}) {
                                 return Paint()
                                   ..shader = RadialGradient(
                                     colors: [
@@ -102,8 +100,8 @@ class LandscapePlayerControls extends StatelessWidget {
                                     radius: 0.4,
                                   ).createShader(
                                     Rect.fromCircle(
-                                      center: Offset(playedPart, height / 2),
-                                      radius: handleRadius,
+                                      center: Offset(playedPart!, height! / 2),
+                                      radius: handleRadius!,
                                     ),
                                   );
                               },

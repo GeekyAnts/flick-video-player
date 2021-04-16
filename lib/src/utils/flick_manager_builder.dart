@@ -4,7 +4,8 @@ import 'package:provider/provider.dart';
 
 /// Uses [MultiProviders] to add all the managers as providers.
 class FlickManagerBuilder extends StatelessWidget {
-  const FlickManagerBuilder({Key key, this.child, this.flickManager})
+  const FlickManagerBuilder(
+      {Key? key, required this.child, required this.flickManager})
       : super(key: key);
   final Widget child;
   final FlickManager flickManager;
@@ -14,13 +15,13 @@ class FlickManagerBuilder extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<FlickVideoManager>.value(
-          value: flickManager.flickVideoManager,
+          value: flickManager.flickVideoManager!,
         ),
         ChangeNotifierProvider<FlickDisplayManager>.value(
-          value: flickManager.flickDisplayManager,
+          value: flickManager.flickDisplayManager!,
         ),
         ChangeNotifierProvider<FlickControlManager>.value(
-          value: flickManager.flickControlManager,
+          value: flickManager.flickControlManager!,
         ),
       ],
       child: child,

@@ -7,14 +7,14 @@ import 'package:video_player/video_player.dart';
 import 'landscape_player_controls.dart';
 
 class LandscapePlayer extends StatefulWidget {
-  LandscapePlayer({Key key}) : super(key: key);
+  LandscapePlayer({Key? key}) : super(key: key);
 
   @override
   _LandscapePlayerState createState() => _LandscapePlayerState();
 }
 
 class _LandscapePlayerState extends State<LandscapePlayer> {
-  FlickManager flickManager;
+  late FlickManager flickManager;
 
   @override
   void initState() {

@@ -9,21 +9,22 @@ import './data_manager.dart';
 import 'landscape_controls.dart';
 
 class AnimationPlayer extends StatefulWidget {
-  AnimationPlayer({Key key}) : super(key: key);
+  AnimationPlayer({Key? key}) : super(key: key);
 
   @override
   _AnimationPlayerState createState() => _AnimationPlayerState();
 }
 
 class _AnimationPlayerState extends State<AnimationPlayer> {
-  FlickManager flickManager;
-  AnimationPlayerDataManager dataManager;
+  late FlickManager flickManager;
+  late AnimationPlayerDataManager dataManager;
   List items = mockData['items'];
   bool _pauseOnTap = true;
   double playBackSpeed = 1.0;
   @override
   void initState() {
     super.initState();
+    // String url = items[0]['trailer_url'];
     flickManager = FlickManager(
       videoPlayerController:
           VideoPlayerController.network(items[0]['trailer_url']),
@@ -47,9 +48,9 @@ class _AnimationPlayerState extends State<AnimationPlayer> {
       key: ObjectKey(flickManager),
       onVisibilityChanged: (visibility) {
         if (visibility.visibleFraction == 0 && this.mounted) {
-          flickManager.flickControlManager.autoPause();
+          flickManager.flickControlManager!.autoPause();
         } else if (visibility.visibleFraction == 1) {
-          flickManager.flickControlManager.autoResume();
+          flickManager.flickControlManager!.autoResume();
         }
       },
       child: Container(
@@ -119,7 +120,7 @@ class _AnimationPlayerState extends State<AnimationPlayer> {
                       value: playBackSpeed,
                       onChanged: (val) {},
                       onChangeEnd: (val) {
-                        flickManager.flickVideoManager.videoPlayerController
+                        flickManager.flickVideoManager?.videoPlayerController!
                             .setPlaybackSpeed(val);
                         setState(() {
                           playBackSpeed = val;

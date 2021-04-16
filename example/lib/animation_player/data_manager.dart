@@ -8,11 +8,11 @@ class AnimationPlayerDataManager {
   final FlickManager flickManager;
   final List items;
   int currentIndex = 0;
-  Timer videoChangeTimer;
+  late Timer videoChangeTimer;
 
   AnimationPlayerDataManager(this.flickManager, this.items);
 
-  playNextVideo([Duration duration]) {
+  playNextVideo([Duration? duration]) {
     if (currentIndex >= items.length - 1) {
       currentIndex = -1;
     }

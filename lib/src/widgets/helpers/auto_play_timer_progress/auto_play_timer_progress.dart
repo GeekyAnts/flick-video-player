@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 class FlickAutoPlayTimerProgressPainter extends CustomPainter {
   FlickAutoPlayTimerProgressPainter({
     this.animation,
-    FlickAutoPlayTimerProgressColors colors,
+    FlickAutoPlayTimerProgressColors? colors,
   })  : this.colors = colors ?? FlickAutoPlayTimerProgressColors(),
         super(repaint: animation);
 
-  final Animation<double> animation;
+  final Animation<double>? animation;
   final FlickAutoPlayTimerProgressColors colors;
 
   @override
@@ -22,7 +22,7 @@ class FlickAutoPlayTimerProgressPainter extends CustomPainter {
 
     canvas.drawCircle(size.center(Offset.zero), size.width / 2.0, paint);
     paint.color = colors.color;
-    double progress = (1.0 - animation.value) * 2 * pi;
+    double progress = (1.0 - animation!.value) * 2 * pi;
     canvas.drawArc(Offset.zero & size, pi * 1.5, -progress, false, paint);
   }
 

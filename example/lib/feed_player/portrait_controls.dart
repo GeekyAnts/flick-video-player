@@ -5,11 +5,11 @@ import './multi_manager/flick_multi_manager.dart';
 
 class FeedPlayerPortraitControls extends StatelessWidget {
   const FeedPlayerPortraitControls(
-      {Key key, this.flickMultiManager, this.flickManager})
+      {Key? key, this.flickMultiManager, this.flickManager})
       : super(key: key);
 
-  final FlickMultiManager flickMultiManager;
-  final FlickManager flickManager;
+  final FlickMultiManager? flickMultiManager;
+  final FlickManager? flickManager;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class FeedPlayerPortraitControls extends StatelessWidget {
           Expanded(
             child: FlickToggleSoundAction(
               toggleMute: () {
-                flickMultiManager.toggleMute();
+                flickMultiManager?.toggleMute();
                 displayManager.handleShowPlayerControls();
               },
               child: FlickSeekVideoAction(
@@ -59,7 +59,7 @@ class FeedPlayerPortraitControls extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: FlickSoundToggle(
-                    toggleMute: () => flickMultiManager.toggleMute(),
+                    toggleMute: () => flickMultiManager?.toggleMute(),
                     color: Colors.white,
                   ),
                 ),

@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 class AnimationPlayerLandscapeControls extends StatelessWidget {
   const AnimationPlayerLandscapeControls(
-      {Key key, @required this.animationPlayerDataManager})
+      {Key? key, required this.animationPlayerDataManager})
       : super(key: key);
 
   final AnimationPlayerDataManager animationPlayerDataManager;
@@ -67,8 +67,7 @@ class AnimationPlayerLandscapeControls extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        (animationPlayerDataManager).getCurrentVideoTitle() ??
-                            '',
+                        (animationPlayerDataManager).getCurrentVideoTitle(),
                         style: TextStyle(color: Colors.white),
                       ),
                     ),

@@ -68,7 +68,7 @@ class _AnimationPlayerState extends State<AnimationPlayer> {
                 ),
               ),
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Next video'),
               onPressed: () => dataManager.playNextVideo(),
             ),

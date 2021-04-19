@@ -21,9 +21,8 @@ class FlickManager {
 
     /// Auto-play video once initialized.
     bool autoPlay = true,
-  })  : this.getPlayerControlsTimeout =
-            getPlayerControlsTimeout ?? getPlayerControlsTimeoutDefault,
-        assert(videoPlayerController != null) {
+  }) : this.getPlayerControlsTimeout =
+            getPlayerControlsTimeout ?? getPlayerControlsTimeoutDefault {
     _flickControlManager = FlickControlManager(
       flickManager: this,
     );

@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 /// Show a widget based on the mute/unmute state of the player and toggle the same.
 class FlickSoundToggle extends StatelessWidget {
   const FlickSoundToggle({
-    Key key,
+    Key? key,
     this.muteChild,
     this.unmuteChild,
     this.toggleMute,
@@ -18,12 +18,12 @@ class FlickSoundToggle extends StatelessWidget {
   /// Widget shown when the video is not muted.
   ///
   /// Default - Icon(Icons.volume_off)
-  final Widget muteChild;
+  final Widget? muteChild;
 
   /// Widget shown when the video is muted.
   ///
   /// Default - Icon(Icons.volume_up)
-  final Widget unmuteChild;
+  final Widget? unmuteChild;
 
   /// Function called onTap of visible child.
   ///
@@ -31,19 +31,19 @@ class FlickSoundToggle extends StatelessWidget {
   /// ``` dart
   ///    controlManager.toggleMute();
   /// ```
-  final Function toggleMute;
+  final Function? toggleMute;
 
   /// Size for the default icons.
-  final double size;
+  final double? size;
 
   /// Color for the default icons.
-  final Color color;
+  final Color? color;
 
   /// Padding around the visible child.
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   /// Decoration around the visible child.
-  final Decoration decoration;
+  final Decoration? decoration;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class FlickSoundToggle extends StatelessWidget {
         key: key,
         onTap: () {
           if (toggleMute != null) {
-            toggleMute();
+            toggleMute!();
           } else {
             controlManager.toggleMute();
           }

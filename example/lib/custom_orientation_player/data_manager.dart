@@ -4,13 +4,13 @@ import 'package:flick_video_player/flick_video_player.dart';
 import 'package:video_player/video_player.dart';
 
 class DataManager {
-  DataManager({this.flickManager, this.urls});
+  DataManager({required this.flickManager, required this.urls});
 
   int currentPlaying = 0;
   final FlickManager flickManager;
   final List<String> urls;
 
-  Timer videoChangeTimer;
+  late Timer videoChangeTimer;
 
   String getNextVideo() {
     currentPlaying++;
@@ -25,7 +25,7 @@ class DataManager {
     return currentPlaying != 0;
   }
 
-  skipToNextVideo([Duration duration]) {
+  skipToNextVideo([Duration? duration]) {
     if (hasNextVideo()) {
       flickManager.handleChangeVideo(
           VideoPlayerController.network(urls[currentPlaying + 1]),
@@ -43,11 +43,12 @@ class DataManager {
     }
   }
 
-  cancelVideoAutoPlayTimer({bool playNext}) {
+  cancelVideoAutoPlayTimer({required bool playNext}) {
     if (playNext != true) {
       currentPlaying--;
     }
 
-    flickManager.flickVideoManager.cancelVideoAutoPlayTimer(playNext: playNext);
+    flickManager.flickVideoManager
+        ?.cancelVideoAutoPlayTimer(playNext: playNext);
   }
 }

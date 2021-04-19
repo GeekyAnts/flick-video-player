@@ -7,8 +7,8 @@ import 'package:provider/provider.dart';
 /// Hides the child with [FadeAnimation].
 class FlickAutoHideChild extends StatelessWidget {
   const FlickAutoHideChild({
-    Key key,
-    @required this.child,
+    Key? key,
+    required this.child,
     this.autoHide = true,
     this.showIfVideoNotInitialized = true,
   }) : super(key: key);

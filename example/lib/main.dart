@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
 }
 
 class Examples extends StatefulWidget {
-  const Examples({Key key}) : super(key: key);
+  const Examples({Key? key}) : super(key: key);
 
   @override
   _ExamplesState createState() => _ExamplesState();
@@ -83,7 +83,7 @@ class _ExamplesState extends State<Examples> {
                       child: Container(
                         padding: EdgeInsets.all(20),
                         child: Text(
-                          samples.asMap()[index]['name'],
+                          samples.asMap()[index]?['name'],
                           style: TextStyle(
                             color: index == selectedIndex
                                 ? Color.fromRGBO(100, 109, 236, 1)

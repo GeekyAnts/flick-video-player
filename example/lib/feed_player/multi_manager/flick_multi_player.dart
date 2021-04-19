@@ -9,11 +9,14 @@ import 'package:video_player/video_player.dart';
 
 class FlickMultiPlayer extends StatefulWidget {
   const FlickMultiPlayer(
-      {Key key, this.url, this.image, this.flickMultiManager})
+      {Key? key,
+      required this.url,
+      this.image,
+      required this.flickMultiManager})
       : super(key: key);
 
   final String url;
-  final String image;
+  final String? image;
   final FlickMultiManager flickMultiManager;
 
   @override
@@ -21,7 +24,7 @@ class FlickMultiPlayer extends StatefulWidget {
 }
 
 class _FlickMultiPlayerState extends State<FlickMultiPlayer> {
-  FlickManager flickManager;
+  late FlickManager flickManager;
 
   @override
   void initState() {
@@ -59,7 +62,7 @@ class _FlickMultiPlayerState extends State<FlickMultiPlayer> {
                 children: <Widget>[
                   Positioned.fill(
                     child: Image.asset(
-                      widget.image,
+                      widget.image!,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -86,7 +89,7 @@ class _FlickMultiPlayerState extends State<FlickMultiPlayer> {
           flickVideoWithControlsFullscreen: FlickVideoWithControls(
             playerLoadingFallback: Center(
                 child: Image.network(
-              widget.image,
+              widget.image!,
               fit: BoxFit.fitWidth,
             )),
             controls: FlickLandscapeControls(),

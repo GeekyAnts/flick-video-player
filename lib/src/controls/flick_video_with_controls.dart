@@ -13,7 +13,7 @@ import 'package:video_player/video_player.dart';
 ///      * Controls.
 class FlickVideoWithControls extends StatefulWidget {
   const FlickVideoWithControls({
-    Key key,
+    Key? key,
     this.controls,
     this.videoFit = BoxFit.cover,
     this.playerLoadingFallback = const Center(
@@ -39,7 +39,7 @@ class FlickVideoWithControls extends StatefulWidget {
   }) : super(key: key);
 
   /// Create custom controls or use any of these [FlickPortraitControls], [FlickLandscapeControls]
-  final Widget controls;
+  final Widget? controls;
 
   /// Conditionally rendered if player is not initialized.
   final Widget playerLoadingFallback;
@@ -80,11 +80,11 @@ class FlickVideoWithControls extends StatefulWidget {
 }
 
 class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
-  VideoPlayerController _videoPlayerController;
+  VideoPlayerController? _videoPlayerController;
 
   @override
   void didChangeDependencies() {
-    VideoPlayerController newController =
+    VideoPlayerController? newController =
         Provider.of<FlickVideoManager>(context).videoPlayerController;
     if ((widget.willVideoPlayerControllerChange &&
             _videoPlayerController != newController) ||
@@ -116,10 +116,10 @@ class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
                 Positioned.fill(
                   child: Stack(
                     children: <Widget>[
-                      if (_videoPlayerController?.value?.hasError == false &&
-                          _videoPlayerController?.value?.isInitialized == false)
+                      if (_videoPlayerController?.value.hasError == false &&
+                          _videoPlayerController?.value.isInitialized == false)
                         widget.playerLoadingFallback,
-                      if (_videoPlayerController?.value?.hasError == true)
+                      if (_videoPlayerController?.value.hasError == true)
                         widget.playerErrorFallback,
                       widget.controls ?? Container(),
                     ],

@@ -123,14 +123,6 @@ class FlickVideoManager extends ChangeNotifier {
     // Dispose the old controller after 5 seconds.
     Future.delayed(Duration(seconds: 5), () => oldController?.dispose());
 
-    // If movie already ended, restart the movie (Happens when previously used controller is
-    // used again).
-    if (videoPlayerController!.value.position ==
-        videoPlayerController!.value.duration) {
-      videoPlayerController!
-          .seekTo(Duration(hours: 0, minutes: 0, seconds: 0, milliseconds: 0));
-    }
-
     // Initialize the video if not initialized
     // (User can initialize the video while passing to flick).
     if (!videoPlayerController!.value.isInitialized && autoInitialize) {
@@ -139,6 +131,14 @@ class FlickVideoManager extends ChangeNotifier {
       } catch (err) {
         _flickManager._handleErrorInVideo();
       }
+    }
+
+    // If movie already ended, restart the movie (Happens when previously used controller is
+    // used again).
+    if (videoPlayerController!.value.position ==
+        videoPlayerController!.value.duration) {
+      videoPlayerController!
+          .seekTo(Duration(hours: 0, minutes: 0, seconds: 0, milliseconds: 0));
     }
 
     if (autoPlay && ModalRoute.of(_flickManager._context!)!.isCurrent) {

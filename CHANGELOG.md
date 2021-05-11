@@ -17,3 +17,7 @@ Added `setPlaybackSpeed` method in `FlickControlManager` to change video playbac
 ## 0.3.0
 
 Migrated to dart null safety.
+
+## 0.3.1
+
+Fix for NullPointerException for video_player in release mode.

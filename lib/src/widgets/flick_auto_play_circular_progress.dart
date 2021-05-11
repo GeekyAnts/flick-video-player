@@ -106,8 +106,8 @@ class _FlickAutoPlayCircularProgressState
                           if (widget.playNextVideo != null) {
                             widget.playNextVideo!();
                           } else {
-                            _videoManager!.cancelVideoAutoPlayTimer(
-                                playNext: true);
+                            _videoManager!
+                                .cancelVideoAutoPlayTimer(playNext: true);
                           }
                         },
                         child: widget.playChild,

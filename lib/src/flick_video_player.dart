@@ -1,4 +1,6 @@
+import 'package:universal_html/html.dart';
 import 'package:flick_video_player/flick_video_player.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wakelock/wakelock.dart';
@@ -110,6 +112,10 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
     _isFullscreen = true;
     _setPreferredOrientation();
     _setSystemUIOverlays();
+    if (kIsWeb) {
+      document.documentElement?.requestFullscreen();
+    }
+
     _overlayEntry = OverlayEntry(builder: (context) {
       return Scaffold(
         body: FlickManagerBuilder(
@@ -132,6 +138,10 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
     }
 
     _isFullscreen = false;
+
+    if (kIsWeb) {
+      document.exitFullscreen();
+    }
 
     _overlayEntry?.remove();
     _overlayEntry = null;

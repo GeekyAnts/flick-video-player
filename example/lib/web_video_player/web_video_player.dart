@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import 'package:video_player/video_player.dart';
 
-import 'dart_manager.dart';
+import 'data_manager.dart';
 
 class WebVideoPlayer extends StatefulWidget {
   WebVideoPlayer({Key? key}) : super(key: key);
@@ -55,11 +55,15 @@ class _WebVideoPlayerState extends State<WebVideoPlayer> {
           flickVideoWithControls: FlickVideoWithControls(
             controls: WebVideoControl(
               dataManager: dataManager!,
+              iconSize: 30,
+              fontSize: 14,
+              progressBarSettings: FlickProgressBarSettings(
+                height: 5,
+                handleRadius: 5.5,
+              ),
             ),
-            aspectRatioWhenLoading: 4 / 3,
-          ),
-          flickVideoWithControlsFullscreen: FlickVideoWithControls(
-            controls: FlickLandscapeControls(),
+            videoFit: BoxFit.contain,
+            // aspectRatioWhenLoading: 4 / 3,
           ),
         ),
       ),

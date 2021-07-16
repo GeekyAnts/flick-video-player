@@ -44,7 +44,6 @@ class _DefaultPlayerState extends State<DefaultPlayer> {
           flickManager: flickManager,
           flickVideoWithControls: FlickVideoWithControls(
             controls: FlickPortraitControls(),
-            aspectRatioWhenLoading: 4 / 3,
           ),
           flickVideoWithControlsFullscreen: FlickVideoWithControls(
             controls: FlickLandscapeControls(),

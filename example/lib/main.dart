@@ -61,70 +61,69 @@ class _ExamplesState extends State<Examples> {
 
   @override
   Widget build(BuildContext context) {
-    return kIsWeb
-        ? webview()
-        : Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Container(
-                child: samples[selectedIndex]['widget'],
-              ),
-              Container(
-                height: 80,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                ),
-                child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: samples.asMap().keys.map((index) {
-                      return Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () {
-                            changeSample(index);
-                          },
-                          child: Center(
-                            child: Container(
-                              padding: EdgeInsets.all(20),
-                              child: Text(
-                                samples.asMap()[index]?['name'],
-                                style: TextStyle(
-                                  color: index == selectedIndex
-                                      ? Color.fromRGBO(100, 109, 236, 1)
-                                      : Color.fromRGBO(173, 176, 183, 1),
-                                  fontWeight: index == selectedIndex
-                                      ? FontWeight.bold
-                                      : null,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
-                    }).toList()),
-              ),
-            ],
-          );
+    return kIsWeb ? _buildWebView() : _buildMobileView();
   }
 
-  Widget webview() {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          WebVideoPlayer(),
-          Container(
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Text('Flick video player',
-                  style: TextStyle(
-                    color: Color.fromRGBO(100, 109, 236, 1),
-                    fontWeight: FontWeight.bold,
-                  )),
-            ),
-          )
-        ],
-      ),
+  Widget _buildWebView() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Expanded(child: WebVideoPlayer()),
+        Container(
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Text('Flick video player',
+                style: TextStyle(
+                  color: Color.fromRGBO(100, 109, 236, 1),
+                  fontWeight: FontWeight.bold,
+                )),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _buildMobileView() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Container(
+          child: samples[selectedIndex]['widget'],
+        ),
+        Container(
+          height: 80,
+          decoration: BoxDecoration(
+            color: Colors.white,
+          ),
+          child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: samples.asMap().keys.map((index) {
+                return Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      changeSample(index);
+                    },
+                    child: Center(
+                      child: Container(
+                        padding: EdgeInsets.all(20),
+                        child: Text(
+                          samples.asMap()[index]?['name'],
+                          style: TextStyle(
+                            color: index == selectedIndex
+                                ? Color.fromRGBO(100, 109, 236, 1)
+                                : Color.fromRGBO(173, 176, 183, 1),
+                            fontWeight:
+                                index == selectedIndex ? FontWeight.bold : null,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              }).toList()),
+        ),
+      ],
     );
   }
 }

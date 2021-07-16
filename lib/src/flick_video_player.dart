@@ -80,6 +80,19 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
       Wakelock.enable();
     }
 
+    if (kIsWeb) {
+      document.documentElement?.onFullscreenChange.listen((event) {
+        final isFullscreen =
+            window != null && (window.screenTop == 0 && window.screenY == 0);
+        if (isFullscreen && !flickManager.flickControlManager!.isFullscreen) {
+          flickManager.flickControlManager!.enterFullscreen();
+        } else if (!isFullscreen &&
+            flickManager.flickControlManager!.isFullscreen) {
+          flickManager.flickControlManager!.exitFullscreen();
+        }
+      });
+    }
+
     super.initState();
   }
 

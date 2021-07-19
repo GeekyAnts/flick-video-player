@@ -1,6 +1,8 @@
 import 'package:example/animation_player/animation_player.dart';
 import 'package:example/custom_orientation_player/custom_orientation_player.dart';
 import 'package:example/feed_player/feed_player.dart';
+import 'package:example/web_video_player/web_video_player.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
 
@@ -59,6 +61,29 @@ class _ExamplesState extends State<Examples> {
 
   @override
   Widget build(BuildContext context) {
+    return kIsWeb ? _buildWebView() : _buildMobileView();
+  }
+
+  Widget _buildWebView() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Expanded(child: WebVideoPlayer()),
+        Container(
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Text('Flick video player',
+                style: TextStyle(
+                  color: Color.fromRGBO(100, 109, 236, 1),
+                  fontWeight: FontWeight.bold,
+                )),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _buildMobileView() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[

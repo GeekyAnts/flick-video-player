@@ -21,3 +21,7 @@ Migrated to dart null safety.
 ## 0.3.1
 
 Fix for NullPointerException for video_player in release mode.
+
+## 0.4.0-dev.1.
+
+Added an example for web platform, with some fixes on the player for web.

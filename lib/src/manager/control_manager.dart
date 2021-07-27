@@ -174,6 +174,45 @@ class FlickControlManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Increase volume between 0.0 - 1.0,
+  /// 0.0 being mute and 1.0 full volume.
+  Future<void> increaseVolume(double increaseBy) async {
+    final currentVolume = _videoPlayerController?.value?.volume ?? 0;
+    final volumeAfterIncrease = currentVolume + increaseBy;
+    final volume = _verifyVolumeBounds(volumeAfterIncrease);
+    await setVolume(volume);
+    _flickManager._handleVolumeChange(volume: volume);
+  }
+
+  /// Decrease volume between 0.0 - 1.0,
+  /// 0.0 being mute and 1.0 full volume.
+  Future<void> decreaseVolume(double decreaseBy) async {
+    final currentVolume = _videoPlayerController?.value?.volume ?? 0;
+    final volumeAfterDecrease = currentVolume - decreaseBy;
+    final volume = _verifyVolumeBounds(volumeAfterDecrease);
+    await setVolume(volume);
+    _flickManager._handleVolumeChange(volume: volume);
+  }
+
+  double _verifyVolumeBounds(double volume) {
+    var boundedVolume;
+    if (volume > 1) {
+      boundedVolume = 1;
+    } else if (volume < 0) {
+      boundedVolume = 0;
+    } else {
+      boundedVolume = double.parse(volume.toStringAsFixed(2));
+    }
+
+    if (boundedVolume == 0) {
+      _isMute = true;
+    } else {
+      _isMute = false;
+    }
+
+    return boundedVolume;
+  }
+
   _notify() {
     if (_mounted) {
       notifyListeners();

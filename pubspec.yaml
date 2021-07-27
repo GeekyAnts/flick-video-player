@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  video_player: ^2.0.2
+  video_player: ^2.1.12
   provider: ^5.0.0
   wakelock: ^0.5.0+2
   universal_html: ^2.0.8

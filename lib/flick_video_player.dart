@@ -12,6 +12,7 @@ export './src/widgets/helpers/flick_auto_hide_child.dart';
 
 export './src/widgets/helpers/progress_bar/progress_bar_settings.dart';
 
+export './src/widgets/flick_animated_volume_level.dart';
 export './src/widgets/flick_full_screen_toggle.dart';
 export './src/widgets/flick_play_toggle.dart';
 export './src/widgets/flick_video_progress_bar.dart';

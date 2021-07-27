@@ -37,6 +37,24 @@ class WebVideoControl extends StatelessWidget {
     return FlickShowControlsActionWeb(
       child: Stack(
         children: <Widget>[
+          Positioned(
+            left: 0,
+            right: 0,
+            top: 0,
+            child: Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.only(
+                top: 20,
+              ),
+              child: FlickAnimatedVolumeLevel(
+                decoration: BoxDecoration(
+                  color: Colors.black26,
+                ),
+                textStyle: TextStyle(color: Colors.white, fontSize: 20),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              ),
+            ),
+          ),
           Positioned.fill(
             child: FlickSeekVideoAction(
               child: Center(

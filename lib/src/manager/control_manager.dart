@@ -15,6 +15,7 @@ class FlickControlManager extends ChangeNotifier {
   bool _isMute = false;
   bool _isFullscreen = false;
   bool _isAutoPause = false;
+  double? _volume;
 
   /// Is player in full-screen.
   bool get isFullscreen => _isFullscreen;
@@ -131,13 +132,13 @@ class FlickControlManager extends ChangeNotifier {
   /// Mute the video.
   Future<void> mute() async {
     _isMute = true;
-    await setVolume(0);
+    await setVolume(0, isMute: true);
   }
 
   /// Un-mute the video.
   Future<void> unmute() async {
     _isMute = false;
-    await setVolume(1);
+    await setVolume(_volume ?? 1);
   }
 
   /// Toggle mute.
@@ -147,8 +148,11 @@ class FlickControlManager extends ChangeNotifier {
 
   /// Set volume between 0.0 - 1.0,
   /// 0.0 being mute and 1.0 full volume.
-  Future<void> setVolume(double volume) async {
+  Future<void> setVolume(double volume, {bool isMute = false}) async {
     await _videoPlayerController?.setVolume(volume);
+    if (!isMute) {
+      _volume = volume;
+    }
     _notify();
   }
 

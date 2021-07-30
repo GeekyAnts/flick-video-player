@@ -37,6 +37,8 @@ The [video_player](https://pub.dev/packages/video_player) plugin gives low level
 ### Example
 Please run the app in the example/ folder to start playing!
 
+Refer to this [article](https://geekyants.com/blog/creating-a-customisable-video-player-in-flutter-283) to understand how things are working under the hood.
+
 ### Installation
 Add the following dependencies in your pubspec.yaml file of your flutter project.
 ```dart
@@ -85,8 +87,6 @@ class _SamplePlayerState extends State<SamplePlayer> {
   }
 }
 ```
-
-Refer to this [article](https://geekyants.com/blog/creating-a-customisable-video-player-in-flutter-283) to understand how things are working under the hood.
 
 ### Public Classes Summary
 

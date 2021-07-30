@@ -97,7 +97,9 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
   @override
   void dispose() {
     flickManager.flickControlManager!.removeListener(listener);
-    Wakelock.disable();
+    if (widget.wakelockEnabled) {
+      Wakelock.disable();
+    }
     super.dispose();
   }
 
@@ -113,10 +115,9 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
   }
 
   _switchToFullscreen() {
-    /// Disable previous wakelock setting.
-    Wakelock.disable();
-
     if (widget.wakelockEnabledFullscreen) {
+      /// Disable previous wakelock setting.
+      Wakelock.disable();
       Wakelock.enable();
     }
 
@@ -141,10 +142,9 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
   }
 
   _exitFullscreen() {
-    /// Disable previous wakelock setting.
-    Wakelock.disable();
-
     if (widget.wakelockEnabled) {
+      /// Disable previous wakelock setting.
+      Wakelock.disable();
       Wakelock.enable();
     }
 

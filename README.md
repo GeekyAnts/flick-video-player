@@ -12,8 +12,9 @@ The [video_player](https://pub.dev/packages/video_player) plugin gives low level
 * Custom controls for normal and fullscreen.
 * Auto-play list of videos.
 * Change playback speed.
+* Keyboard shortcuts for web.
 
-# Demo
+# Demo Mobile
 
  |                                                              ![](https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/demo/default_player.gif?raw=true)                                                              |                                                                ![](https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/demo/animation_player.gif?raw=true)                                                                |                                                           ![](https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/demo/feed_player.gif?raw=true)                                                           |
  | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
@@ -24,9 +25,19 @@ The [video_player](https://pub.dev/packages/video_player) plugin gives low level
 | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | Orientation player <br>[Video](https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/demo/custom_orientation.mp4?raw=true) <br>[Code](https://github.com/GeekyAnts/flick-video-player/tree/master/example/lib/custom_orientation_player) | Landscape player <br>[Video](https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/demo/landscape_player.mp4?raw=true) <br>[Code](https://github.com/GeekyAnts/flick-video-player/tree/master/example/lib/landscape_player) |
 
+# Demo Web
+
+|                                                              ![](https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/demo/web_player.gif?raw=true)                                                              |                                                               
+ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | 
+ | Web player <br>[Video](https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/demo/web_player.mp4?raw=true) <br>[Code](https://github.com/GeekyAnts/flick-video-player/tree/master/example/lib/web_video_player) | 
+
+
+
 
 ### Example
 Please run the app in the example/ folder to start playing!
+
+Refer to this [article](https://geekyants.com/blog/creating-a-customisable-video-player-in-flutter-283) to understand how things are working under the hood.
 
 ### Installation
 Add the following dependencies in your pubspec.yaml file of your flutter project.
@@ -102,6 +113,26 @@ class _SamplePlayerState extends State<SamplePlayer> {
 To play a list of videos you have to create your custom `DataManager`, You can find some of the implementations in /example folder.
 
 UI Helper and Action helpers are widgets which interacts with `FlickDisplayManager`, `FlickControlManager` and `FlickVideoManager` you can easily create your custom widgets/actions, [Provider](https://pub.dev/packages/provider) package is used for state management.
+
+
+### Web
+Guideline for web: As we are using `video_player_web` under-hood please follow [video_player_web](https://pub.dev/packages/video_player_web) doc before you start.
+
+#### Default shortcuts 
+| Key  |  Behavior |
+| ------------ | ------------ |
+| `f`  | Toggle full-screen  |
+| `m`  | Toggle mute   |
+|  `ArrowRight` | Seek forward  |
+| `ArrowLeft`  |  Seek backward |
+| `(Space character)`  |  Toggle play |
+|  `ArrowUp` |  Increase volume  |
+|  `ArrowDown` |  Decrease volume  |
+
+* You can pass `webKeyDownHandler` argument to `FlickVideoPlayer` and manage the keyboard shortcuts yourself.
+
+#### Notes 
+* `Esc` shortcut to exit from full-screen is in development.
 
 ### Origin of third party content
 Videos

@@ -12,9 +12,12 @@ class FlickDisplayManager extends ChangeNotifier {
   final FlickManager? _flickManager;
   bool _mounted = true;
   Timer? _showPlayerControlsTimer;
+  Timer? _showVolumeLevelTimer;
   bool _showPlayerControls = true;
   bool _showForwardSeek = false;
   bool _showBackwardSeek = false;
+  bool _showVolumeLevel = false;
+  double? volume;
 
   /// Show player controls or not.
   bool get showPlayerControls => _showPlayerControls;
@@ -24,6 +27,9 @@ class FlickDisplayManager extends ChangeNotifier {
 
   // Show backward seek icon or not.
   bool get showBackwardSeek => _showBackwardSeek;
+
+  // Show volume level or not.
+  bool get showVolumeLevel => _showVolumeLevel;
 
   /// User video tap action.
   handleVideoTap() {
@@ -85,6 +91,21 @@ class FlickDisplayManager extends ChangeNotifier {
     });
   }
 
+  /// Show the volume level.
+  ///
+  handleShowVolumeLevel({Duration duration = const Duration(seconds: 3)}) {
+    _showVolumeLevel = true;
+    _notify();
+
+    // Cancel any previously running timer.
+    _showVolumeLevelTimer?.cancel();
+
+    _showVolumeLevelTimer = Timer(duration, () {
+      _showVolumeLevel = false;
+      _notify();
+    });
+  }
+
   // If there is any error in video, show controls
   // for how long to show the controls will be determined by the
   // channel.
@@ -104,6 +125,13 @@ class FlickDisplayManager extends ChangeNotifier {
   // channel.
   _handleToggleFullscreen() {
     handleShowPlayerControls();
+  }
+
+  // Called when user calls seekForward or seekBackward
+  // on the controlManager.
+  _handleVolumeChange(double volume) {
+    this.volume = volume;
+    handleShowVolumeLevel();
   }
 
   _notify() {

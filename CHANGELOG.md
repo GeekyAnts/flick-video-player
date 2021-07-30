@@ -25,3 +25,16 @@ Fix for NullPointerException for video_player in release mode.
 ## 0.4.0-dev.1
 
 Added an example for web platform, with some fixes on the player for web.
+
+
+## 0.4.0-dev.2
+
+Fix - Only show buffering is video is buffering and playing.
+
+Fix - Only disable Wakelock if setting enabled by the user.
+
+Web Fix - Chrome auto-play policy fix, video to be muted by default if auto-play enabled.
+
+Updated `video_player` version to 2.1.12.
+
+Added keyboard shortcuts for web player.

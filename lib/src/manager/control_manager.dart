@@ -15,6 +15,7 @@ class FlickControlManager extends ChangeNotifier {
   bool _isMute = false;
   bool _isFullscreen = false;
   bool _isAutoPause = false;
+  double? _volume;
 
   /// Is player in full-screen.
   bool get isFullscreen => _isFullscreen;
@@ -131,13 +132,13 @@ class FlickControlManager extends ChangeNotifier {
   /// Mute the video.
   Future<void> mute() async {
     _isMute = true;
-    await setVolume(0);
+    await setVolume(0, isMute: true);
   }
 
   /// Un-mute the video.
   Future<void> unmute() async {
     _isMute = false;
-    await setVolume(1);
+    await setVolume(_volume ?? 1);
   }
 
   /// Toggle mute.
@@ -147,8 +148,11 @@ class FlickControlManager extends ChangeNotifier {
 
   /// Set volume between 0.0 - 1.0,
   /// 0.0 being mute and 1.0 full volume.
-  Future<void> setVolume(double volume) async {
+  Future<void> setVolume(double volume, {bool isMute = false}) async {
     await _videoPlayerController?.setVolume(volume);
+    if (!isMute) {
+      _volume = volume;
+    }
     _notify();
   }
 
@@ -172,6 +176,45 @@ class FlickControlManager extends ChangeNotifier {
   Future<void> setPlaybackSpeed(double speed) async {
     await _videoPlayerController!.setPlaybackSpeed(speed);
     notifyListeners();
+  }
+
+  /// Increase volume between 0.0 - 1.0,
+  /// 0.0 being mute and 1.0 full volume.
+  Future<void> increaseVolume(double increaseBy) async {
+    final currentVolume = _videoPlayerController?.value.volume ?? 0;
+    final volumeAfterIncrease = currentVolume + increaseBy;
+    final volume = _verifyVolumeBounds(volumeAfterIncrease);
+    await setVolume(volume);
+    _flickManager._handleVolumeChange(volume: volume);
+  }
+
+  /// Decrease volume between 0.0 - 1.0,
+  /// 0.0 being mute and 1.0 full volume.
+  Future<void> decreaseVolume(double decreaseBy) async {
+    final currentVolume = _videoPlayerController?.value.volume ?? 0;
+    final volumeAfterDecrease = currentVolume - decreaseBy;
+    final volume = _verifyVolumeBounds(volumeAfterDecrease);
+    await setVolume(volume);
+    _flickManager._handleVolumeChange(volume: volume);
+  }
+
+  double _verifyVolumeBounds(double volume) {
+    var boundedVolume;
+    if (volume > 1) {
+      boundedVolume = 1;
+    } else if (volume < 0) {
+      boundedVolume = 0;
+    } else {
+      boundedVolume = double.parse(volume.toStringAsFixed(2));
+    }
+
+    if (boundedVolume == 0) {
+      _isMute = true;
+    } else {
+      _isMute = false;
+    }
+
+    return boundedVolume;
   }
 
   _notify() {

@@ -1,3 +1,4 @@
+import 'package:flick_video_player/src/utils/web_key_bindings.dart';
 import 'package:universal_html/html.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/foundation.dart';
@@ -25,6 +26,7 @@ class FlickVideoPlayer extends StatefulWidget {
     ],
     this.wakelockEnabled = true,
     this.wakelockEnabledFullscreen = true,
+    this.webKeyDownHandler = flickDefaultWebKeyDownHandler,
   }) : super(key: key);
 
   final FlickManager flickManager;
@@ -59,6 +61,9 @@ class FlickVideoPlayer extends StatefulWidget {
   /// Prevents the screen from turning off automatically in full-screen.
   final bool wakelockEnabledFullscreen;
 
+  /// Callback called on keyDown for web, used for keyboard shortcuts.
+  final Function(KeyboardEvent, FlickManager) webKeyDownHandler;
+
   @override
   _FlickVideoPlayerState createState() => _FlickVideoPlayerState();
 }
@@ -81,16 +86,9 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
     }
 
     if (kIsWeb) {
-      document.documentElement?.onFullscreenChange.listen((event) {
-        final isFullscreen =
-            window != null && (window.screenTop == 0 && window.screenY == 0);
-        if (isFullscreen && !flickManager.flickControlManager!.isFullscreen) {
-          flickManager.flickControlManager!.enterFullscreen();
-        } else if (!isFullscreen &&
-            flickManager.flickControlManager!.isFullscreen) {
-          flickManager.flickControlManager!.exitFullscreen();
-        }
-      });
+      document.documentElement?.onFullscreenChange
+          .listen(_webFullscreenListener);
+      document.documentElement?.onKeyDown.listen(_webKeyListener);
     }
 
     super.initState();
@@ -177,6 +175,21 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
     } else {
       SystemChrome.setEnabledSystemUIOverlays(widget.systemUIOverlay);
     }
+  }
+
+  void _webFullscreenListener(Event event) {
+    final isFullscreen =
+        window != null && (window.screenTop == 0 && window.screenY == 0);
+    if (isFullscreen && !flickManager.flickControlManager!.isFullscreen) {
+      flickManager.flickControlManager!.enterFullscreen();
+    } else if (!isFullscreen &&
+        flickManager.flickControlManager!.isFullscreen) {
+      flickManager.flickControlManager!.exitFullscreen();
+    }
+  }
+
+  void _webKeyListener(KeyboardEvent event) {
+    widget.webKeyDownHandler(event, flickManager);
   }
 
   @override

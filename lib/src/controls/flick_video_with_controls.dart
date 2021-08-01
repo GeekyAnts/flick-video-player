@@ -115,7 +115,19 @@ class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
                 ),
                 Positioned.fill(
                   child: Stack(
+                    alignment: Alignment.bottomCenter,
                     children: <Widget>[
+                      _videoPlayerController!.closedCaptionFile != null
+                          ? Positioned(
+                              bottom: 5,
+                              child: Transform.scale(
+                                scale: 0.7,
+                                child: ClosedCaption(
+                                    text: _videoPlayerController!
+                                        .value.caption.text),
+                              ),
+                            )
+                          : SizedBox(),
                       if (_videoPlayerController?.value.hasError == false &&
                           _videoPlayerController?.value.isInitialized == false)
                         widget.playerLoadingFallback,

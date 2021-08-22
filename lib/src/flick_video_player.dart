@@ -161,7 +161,10 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
   }
 
   _setPreferredOrientation() {
-    if (_isFullscreen) {
+    // when aspect ratio is less than 1 , video will be played in portrait mode and orientation will not be changed.
+    var aspectRatio =
+        widget.flickManager.flickVideoManager!.videoPlayerValue!.aspectRatio;
+    if (_isFullscreen && aspectRatio >= 1) {
       SystemChrome.setPreferredOrientations(
           widget.preferredDeviceOrientationFullscreen);
     } else {

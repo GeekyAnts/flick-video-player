@@ -36,6 +36,10 @@ class FlickVideoWithControls extends StatefulWidget {
     ),
     this.aspectRatioWhenLoading = 16 / 9,
     this.willVideoPlayerControllerChange = true,
+    this.closedCaptionTextStyle = const TextStyle(
+      color: Colors.white,
+      fontSize: 12,
+    ),
   }) : super(key: key);
 
   /// Create custom controls or use any of these [FlickPortraitControls], [FlickLandscapeControls]
@@ -57,6 +61,13 @@ class FlickVideoWithControls extends StatefulWidget {
   ///
   /// If any text style property is passed to Flick Widget at the time of widget creation, that style wont be overridden.
   final TextStyle textStyle;
+
+  /// Used in [DefaultTextStyle]
+  ///
+  /// Use this property if you require to override the text style provided by the default ClosedCaption widgets.
+  ///
+  /// If any text style property is passed to Flick Widget at the time of widget creation, that style wont be overridden.
+  final TextStyle closedCaptionTextStyle;
 
   /// Used in [IconTheme]
   ///
@@ -123,6 +134,7 @@ class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
                               child: Transform.scale(
                                 scale: 0.7,
                                 child: ClosedCaption(
+                                    textStyle: widget.closedCaptionTextStyle,
                                     text: _videoPlayerController!
                                         .value.caption.text),
                               ),

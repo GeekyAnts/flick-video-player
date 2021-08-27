@@ -17,6 +17,7 @@ class FlickDisplayManager extends ChangeNotifier {
   bool _showForwardSeek = false;
   bool _showBackwardSeek = false;
   bool _showVolumeLevel = false;
+  bool _showVideoCaption = false;
   double? volume;
 
   /// Show player controls or not.
@@ -30,6 +31,9 @@ class FlickDisplayManager extends ChangeNotifier {
 
   // Show volume level or not.
   bool get showVolumeLevel => _showVolumeLevel;
+
+  // Show caption or not.
+  bool get showVideoCaption => _showVideoCaption;
 
   /// User video tap action.
   handleVideoTap() {
@@ -104,6 +108,12 @@ class FlickDisplayManager extends ChangeNotifier {
       _showVolumeLevel = false;
       _notify();
     });
+  }
+
+  handleSubtitleVisibility() {
+    print('YAha bhi aaya');
+    _showVideoCaption = !_showVideoCaption;
+    _notify();
   }
 
   // If there is any error in video, show controls

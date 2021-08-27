@@ -38,3 +38,10 @@ Web Fix - Chrome auto-play policy fix, video to be muted by default if auto-play
 Updated `video_player` version to 2.1.12.
 
 Added keyboard shortcuts for web player.
+
+
+## 0.4.0-dev.3
+
+Fix - Video player intialization issue.
+
+Added default closed caption show feature.

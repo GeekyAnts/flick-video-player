@@ -92,7 +92,6 @@ class FlickVideoWithControls extends StatefulWidget {
 
 class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
   VideoPlayerController? _videoPlayerController;
-  // bool _showVideoCaption = true;
   @override
   void didChangeDependencies() {
     VideoPlayerController? newController =
@@ -108,9 +107,9 @@ class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
 
   @override
   Widget build(BuildContext context) {
-    FlickDisplayManager displayManager =
-        Provider.of<FlickDisplayManager>(context);
-    bool _showVideoCaption = displayManager.showVideoCaption;
+    FlickControlManager controlManager =
+        Provider.of<FlickControlManager>(context);
+    bool _showVideoCaption = controlManager.isSub;
     return IconTheme(
       data: widget.iconThemeData,
       child: LayoutBuilder(builder: (context, size) {

@@ -154,21 +154,16 @@ class FlickControlManager extends ChangeNotifier {
   Future<void> hideSubtitle() async {
     _isSub = false;
     _notify();
-    // await setVolume(0, isMute: true);
-    // await handleSubtitleVisibility();
   }
 
   /// show the subtitle.
   Future<void> showSubtitle() async {
     _isSub = true;
     _notify();
-    // await setVolume(_volume ?? 1);
-    // await handleSubtitleVisibility();
   }
 
   /// Toggle subtitle.
   Future<void> toggleSubtitle() async {
-    //  _isSub ? unmute() : mute();
     _isSub ? hideSubtitle() : showSubtitle();
   }
 

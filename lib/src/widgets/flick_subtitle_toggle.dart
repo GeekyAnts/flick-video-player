@@ -64,7 +64,6 @@ class FlickSubtitleToggle extends StatelessWidget {
           size: size,
           color: color,
         );
-    // Widget child = controlManager.isMute ? activeWidget : inactiveWidget;
     Widget child = controlManager.isSub ? activeWidget : inactiveWidget;
     if (videoManager.videoPlayerController!.closedCaptionFile != null) {
       return GestureDetector(
@@ -73,10 +72,7 @@ class FlickSubtitleToggle extends StatelessWidget {
             if (toggleSubtitleVisibility != null) {
               toggleSubtitleVisibility!();
             } else {
-              // controlManager.toggleMute();
               controlManager.toggleSubtitle();
-              // dataManager.flickManager.flickDisplayManager
-              //     .handleSubtitleVisibility();
             }
           },
           child: Container(

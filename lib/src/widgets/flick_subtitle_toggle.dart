@@ -30,7 +30,7 @@ class FlickSubtitleToggle extends StatelessWidget {
   ///
   /// Default action -
   /// ``` dart
-  ///    controlManager.toggleMute();
+  ///    controlManager.toggleSubtitle();
   /// ```
   final Function? toggleSubtitleVisibility;
 

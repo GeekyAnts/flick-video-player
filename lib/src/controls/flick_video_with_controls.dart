@@ -92,7 +92,6 @@ class FlickVideoWithControls extends StatefulWidget {
 
 class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
   VideoPlayerController? _videoPlayerController;
-
   @override
   void didChangeDependencies() {
     VideoPlayerController? newController =
@@ -108,6 +107,9 @@ class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
 
   @override
   Widget build(BuildContext context) {
+    FlickControlManager controlManager =
+        Provider.of<FlickControlManager>(context);
+    bool _showVideoCaption = controlManager.isSub;
     return IconTheme(
       data: widget.iconThemeData,
       child: LayoutBuilder(builder: (context, size) {
@@ -128,7 +130,8 @@ class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
                   child: Stack(
                     alignment: Alignment.bottomCenter,
                     children: <Widget>[
-                      _videoPlayerController!.closedCaptionFile != null
+                      _videoPlayerController!.closedCaptionFile != null &&
+                              _showVideoCaption
                           ? Positioned(
                               bottom: 5,
                               child: Transform.scale(

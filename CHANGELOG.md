@@ -45,3 +45,12 @@ Added keyboard shortcuts for web player.
 Fix - Video player intialization issue.
 
 Added default closed caption show feature.
+
+
+## 0.4.0-dev.4
+
+Fix - Player control on Mobile browser.
+
+Fix - Aspect ratio issue.
+
+Added caption toggle UI widget(FlickSubtitleToggle) and functionality.

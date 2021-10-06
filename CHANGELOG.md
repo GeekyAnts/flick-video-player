@@ -53,4 +53,6 @@ Fix - Player control on Mobile browser.
 
 Fix - Aspect ratio issue.
 
+Fix - Updated third-party packages
+
 Added caption toggle UI widget(FlickSubtitleToggle) and functionality.

@@ -26,16 +26,21 @@ class FlickShowControlsActionWeb extends StatelessWidget {
   Widget build(BuildContext context) {
     FlickDisplayManager displayManager =
         Provider.of<FlickDisplayManager>(context);
-    return Container(
-      child: MouseRegion(
-        key: key,
-        child: child,
-        onEnter: (_) {
-          displayManager.handleShowPlayerControls();
-        },
-        onHover: (_) {
-          displayManager.handleShowPlayerControls();
-        },
+    return GestureDetector(
+      onTap: () {
+        displayManager.handleShowPlayerControls();
+      },
+      child: Container(
+        child: MouseRegion(
+          key: key,
+          child: child,
+          onEnter: (_) {
+            displayManager.handleShowPlayerControls();
+          },
+          onHover: (_) {
+            displayManager.handleShowPlayerControls();
+          },
+        ),
       ),
     );
   }

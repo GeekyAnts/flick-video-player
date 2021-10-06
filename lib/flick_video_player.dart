@@ -17,6 +17,7 @@ export './src/widgets/flick_full_screen_toggle.dart';
 export './src/widgets/flick_play_toggle.dart';
 export './src/widgets/flick_video_progress_bar.dart';
 export './src/widgets/flick_sound_toggle.dart';
+export './src/widgets/flick_subtitle_toggle.dart';
 export './src/widgets/flick_set_play_back.dart';
 
 export './src/widgets/flick_video_buffer.dart';

@@ -29,6 +29,7 @@ class _DefaultPlayerState extends State<DefaultPlayer> {
   Future<ClosedCaptionFile> _loadCaptions() async {
     final String fileContents = await DefaultAssetBundle.of(context)
         .loadString('images/bumble_bee_captions.srt');
+    flickManager.flickControlManager!.toggleSubtitle();
     return SubRipCaptionFile(fileContents);
   }
 

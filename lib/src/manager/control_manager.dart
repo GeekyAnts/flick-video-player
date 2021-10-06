@@ -13,7 +13,6 @@ class FlickControlManager extends ChangeNotifier {
   bool _mounted = true;
 
   bool _isMute = false;
-  bool _isSub = false;
   bool _isFullscreen = false;
   bool _isAutoPause = false;
   double? _volume;
@@ -23,9 +22,6 @@ class FlickControlManager extends ChangeNotifier {
 
   /// Is player mute.
   bool get isMute => _isMute;
-
-  /// Is subtitle visible.
-  bool get isSub => _isSub;
 
   VideoPlayerController? get _videoPlayerController =>
       _flickManager.flickVideoManager!.videoPlayerController;
@@ -148,23 +144,6 @@ class FlickControlManager extends ChangeNotifier {
   /// Toggle mute.
   Future<void> toggleMute() async {
     _isMute ? unmute() : mute();
-  }
-
-  /// hide the subtitle.
-  Future<void> hideSubtitle() async {
-    _isSub = false;
-    _notify();
-  }
-
-  /// show the subtitle.
-  Future<void> showSubtitle() async {
-    _isSub = true;
-    _notify();
-  }
-
-  /// Toggle subtitle.
-  Future<void> toggleSubtitle() async {
-    _isSub ? hideSubtitle() : showSubtitle();
   }
 
   /// Set volume between 0.0 - 1.0,

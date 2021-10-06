@@ -130,8 +130,7 @@ class LandscapePlayerControls extends StatelessWidget {
           top: 10,
           child: GestureDetector(
             onTap: () {
-              // SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
-              SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual);
+              SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
               SystemChrome.setPreferredOrientations(
                   [DeviceOrientation.portraitUp]);
               Navigator.pop(context);

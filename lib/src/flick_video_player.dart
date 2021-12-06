@@ -165,18 +165,18 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
     var aspectRatio =
         widget.flickManager.flickVideoManager!.videoPlayerValue!.aspectRatio;
     if (_isFullscreen && aspectRatio >= 1) {
-      SystemChrome.setPreferredOrientations(
-          widget.preferredDeviceOrientationFullscreen);
+      // SystemChrome.setPreferredOrientations(
+      //     widget.preferredDeviceOrientationFullscreen);
     } else {
-      SystemChrome.setPreferredOrientations(widget.preferredDeviceOrientation);
+      // SystemChrome.setPreferredOrientations(widget.preferredDeviceOrientation);
     }
   }
 
   _setSystemUIOverlays() {
     if (_isFullscreen) {
-      SystemChrome.setEnabledSystemUIOverlays(widget.systemUIOverlayFullscreen);
+      // SystemChrome.setEnabledSystemUIOverlays(widget.systemUIOverlayFullscreen);
     } else {
-      SystemChrome.setEnabledSystemUIOverlays(widget.systemUIOverlay);
+      // SystemChrome.setEnabledSystemUIOverlays(widget.systemUIOverlay);
     }
   }
 

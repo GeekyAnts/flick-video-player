@@ -165,10 +165,10 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
     var aspectRatio =
         widget.flickManager.flickVideoManager!.videoPlayerValue!.aspectRatio;
     if (_isFullscreen && aspectRatio >= 1) {
-      // SystemChrome.setPreferredOrientations(
-      //     widget.preferredDeviceOrientationFullscreen);
+      SystemChrome.setPreferredOrientations(
+          widget.preferredDeviceOrientationFullscreen);
     } else {
-      // SystemChrome.setPreferredOrientations(widget.preferredDeviceOrientation);
+      SystemChrome.setPreferredOrientations(widget.preferredDeviceOrientation);
     }
   }
 

@@ -174,9 +174,11 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
 
   _setSystemUIOverlays() {
     if (_isFullscreen) {
-      SystemChrome.setEnabledSystemUIOverlays(widget.systemUIOverlayFullscreen);
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+          overlays: widget.systemUIOverlayFullscreen);
     } else {
-      SystemChrome.setEnabledSystemUIOverlays(widget.systemUIOverlay);
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+          overlays: widget.systemUIOverlay);
     }
   }
 

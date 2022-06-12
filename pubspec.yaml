@@ -6,14 +6,14 @@ homepage: https://github.com/GeekyAnts/flick-video-player
 version: 0.4.0-dev.4
 
 environment:
-  sdk: ">=2.12.0-0 <3.0.0"
+  sdk: ">=2.16.1 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  video_player: ^2.2.10
-  provider: ^6.0.1
-  wakelock: ^0.5.6
+  video_player: ^2.4.4
+  provider: ^6.0.3
+  wakelock: ^0.6.1+2
   universal_html: ^2.0.8
 
 dev_dependencies:

@@ -62,6 +62,5 @@ Updated dependencies
 
 Fix - Static analysis 
 
-Fix - IOS Swipe to go back
 
 

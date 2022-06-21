@@ -199,12 +199,13 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: _overlayEntry != null
-          ? () {
-              flickManager.flickControlManager!.exitFullscreen();
-              return Future.value(false);
-            }
-          : null,
+      onWillPop: () {
+        if (_overlayEntry != null) {
+          flickManager.flickControlManager!.exitFullscreen();
+          return Future.value(false);
+        }
+        return Future.value(true);
+      },
       child: FlickManagerBuilder(
         flickManager: flickManager,
         child: widget.flickVideoWithControls,

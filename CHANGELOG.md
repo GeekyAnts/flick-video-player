@@ -22,12 +22,23 @@ Migrated to dart null safety.
 
 Fix for NullPointerException for video_player in release mode.
 
-## 0.4.0-dev.1
+## 0.4.0
+
+Updated Flutter to 2.8.0
 
 Added an example for web platform, with some fixes on the player for web.
 
+Added keyboard shortcuts for web player.
 
-## 0.4.0-dev.2
+Added default closed caption show feature.
+
+Added caption toggle UI widget(FlickSubtitleToggle) and functionality.
+
+Updated video_player to latest version video_player: ^2.2.10
+
+Updated wakelock to wakelock: ^0.5.6
+
+`setEnabledSystemUIOverlays` is deprecated and shouldn't be used. Migrate to `setEnabledSystemUIMode`
 
 Fix - Only show buffering is video is buffering and playing.
 
@@ -35,19 +46,7 @@ Fix - Only disable Wakelock if setting enabled by the user.
 
 Web Fix - Chrome auto-play policy fix, video to be muted by default if auto-play enabled.
 
-Updated `video_player` version to 2.1.12.
-
-Added keyboard shortcuts for web player.
-
-
-## 0.4.0-dev.3
-
-Fix - Video player intialization issue.
-
-Added default closed caption show feature.
-
-
-## 0.4.0-dev.4
+Fix - Video player initialization issue.
 
 Fix - Player control on Mobile browser.
 
@@ -55,4 +54,5 @@ Fix - Aspect ratio issue.
 
 Fix - Updated third-party packages
 
-Added caption toggle UI widget(FlickSubtitleToggle) and functionality.
+
+

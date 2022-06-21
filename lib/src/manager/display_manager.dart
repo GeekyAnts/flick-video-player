@@ -74,6 +74,13 @@ class FlickDisplayManager extends ChangeNotifier {
     }
   }
 
+  /// Hide the player controls. Immediatelly
+  hidePlayerControls() {
+    _showPlayerControlsTimer?.cancel();
+    _showPlayerControls = false;
+    _notify();
+  }
+
   // Called when user calls seekForward or seekBackward
   // on the controlManager.
   _handleVideoSeek({required bool forward}) {

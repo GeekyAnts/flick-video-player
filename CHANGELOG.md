@@ -54,5 +54,10 @@ Fix - Aspect ratio issue.
 
 Fix - Updated third-party packages
 
+## 0.5.0
+
+Updated minimum Flutter version to 2.10.
+
+Updated dependencies
 
 

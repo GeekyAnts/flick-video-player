@@ -60,4 +60,8 @@ Updated minimum Flutter version to 2.10.
 
 Updated dependencies
 
+Fix - Static analysis 
+
+Fix - IOS Swipe to go back
+
 

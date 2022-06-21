@@ -183,8 +183,7 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
   }
 
   void _webFullscreenListener(Event event) {
-    final isFullscreen =
-        window != null && (window.screenTop == 0 && window.screenY == 0);
+    final isFullscreen = (window.screenTop == 0 && window.screenY == 0);
     if (isFullscreen && !flickManager.flickControlManager!.isFullscreen) {
       flickManager.flickControlManager!.enterFullscreen();
     } else if (!isFullscreen &&

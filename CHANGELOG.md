@@ -60,6 +60,8 @@ Updated minimum Flutter version to 2.10.
 
 Updated dependencies
 
+Added option to immediately hide player controls in `FlickDisplayManager`
+
 Fix - Static analysis 
 
 

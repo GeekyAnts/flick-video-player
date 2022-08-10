@@ -1,6 +1,7 @@
 import 'package:example/animation_player/animation_player.dart';
 import 'package:example/custom_orientation_player/custom_orientation_player.dart';
 import 'package:example/feed_player/feed_player.dart';
+import 'package:example/short_video_player/homepage/short_video_homepage.dart';
 import 'package:example/web_video_player/web_video_player.dart';
 import 'package:flutter/foundation.dart';
 
@@ -43,6 +44,10 @@ class _ExamplesState extends State<Examples> {
     {'name': 'Feed player', 'widget': Expanded(child: FeedPlayer())},
     {'name': 'Custom orientation player', 'widget': CustomOrientationPlayer()},
     {'name': 'Landscape player', 'widget': LandscapePlayer()},
+    {
+      'name': 'Short Video Player',
+      'widget': Expanded(child: ShortVideoHomePage())
+    },
   ];
 
   int selectedIndex = 0;

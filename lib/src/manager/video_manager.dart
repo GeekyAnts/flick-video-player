@@ -181,10 +181,11 @@ class FlickVideoManager extends ChangeNotifier {
     // Mark video is buffering if video has not ended, has no error,
     // and position is equal to buffered duration.
     _isBuffering = !isVideoEnded &&
-        !videoPlayerValue!.hasError &&
-        videoPlayerController!.value.buffered.isNotEmpty == true &&
-        videoPlayerController!.value.position.inSeconds >=
-            videoPlayerController!.value.buffered[0].end.inSeconds;
+            !videoPlayerValue!.hasError &&
+            videoPlayerController!.value.isBuffering ||
+        (videoPlayerController!.value.buffered.isNotEmpty == true &&
+            videoPlayerController!.value.position.inSeconds >=
+                videoPlayerController!.value.buffered[0].end.inSeconds);
 
     _notify();
   }

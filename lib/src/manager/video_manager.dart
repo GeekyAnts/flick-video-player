@@ -145,7 +145,7 @@ class FlickVideoManager extends ChangeNotifier {
       //Chrome's autoplay policies are simple:
       //Muted autoplay is always allowed.
       if (kIsWeb) _flickManager.flickControlManager!.mute();
-      // if (kIsWeb) _flickManager.flickControlManager!.setVolume(0.5);
+      Future.delayed(Duration(milliseconds: 500),()=>_flickManager.flickControlManager!.unmute());
 
       // Start playing the video.
       _flickManager.flickControlManager!.play();

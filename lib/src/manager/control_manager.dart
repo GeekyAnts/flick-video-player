@@ -45,10 +45,6 @@ class FlickControlManager extends ChangeNotifier {
       _flickManager.handleChangeVideo(VideoPlayerController.network(_flickManager.flickVideoManager!.videoPlayerController!.dataSource));
       togglePlay();
       _notify();
-      Future.delayed(Duration(seconds: 1), () {
-        togglePlay();
-        _notify();
-      });
     }
     _isFullscreen = false;
     _flickManager._handleToggleFullscreen();

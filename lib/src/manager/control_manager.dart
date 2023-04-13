@@ -42,6 +42,7 @@ class FlickControlManager extends ChangeNotifier {
   void exitFullscreen() {
     if (kIsWeb) {
       // trigger controllers again after exiting full screen in web
+      _flickManager.handleChangeVideo(VideoPlayerController.network(_flickManager.flickVideoManager!.videoPlayerController!.dataSource));
       togglePlay();
       _notify();
       Future.delayed(Duration(seconds: 1), () {

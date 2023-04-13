@@ -25,7 +25,7 @@ dependencies:
   visibility_detector: ^0.3.0
   flick_video_player:
     path: '../'
-  video_player: ^2.4.0
+  video_player: ^2.6.1
   provider: ^6.0.1
 
   # The following adds the Cupertino Icons font to your application.

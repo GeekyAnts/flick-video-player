@@ -59,54 +59,51 @@ class FlickPortraitControls extends StatelessWidget {
                   FlickVideoProgressBar(
                     flickProgressBarSettings: progressBarSettings,
                   ),
-                  Container(
-                    color: Colors.green,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        FlickPlayToggle(
-                          size: iconSize,
-                        ),
-                        SizedBox(
-                          width: iconSize / 2,
-                        ),
-                        FlickSoundToggle(
-                          size: iconSize,
-                        ),
-                        SizedBox(
-                          width: iconSize / 2,
-                        ),
-                        Row(
-                          children: <Widget>[
-                            FlickCurrentPosition(
-                              fontSize: fontSize,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      FlickPlayToggle(
+                        size: iconSize,
+                      ),
+                      SizedBox(
+                        width: iconSize / 2,
+                      ),
+                      FlickSoundToggle(
+                        size: iconSize,
+                      ),
+                      SizedBox(
+                        width: iconSize / 2,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          FlickCurrentPosition(
+                            fontSize: fontSize,
+                          ),
+                          FlickAutoHideChild(
+                            child: Text(
+                              ' / ',
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: fontSize),
                             ),
-                            FlickAutoHideChild(
-                              child: Text(
-                                ' / ',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: fontSize),
-                              ),
-                            ),
-                            FlickTotalDuration(
-                              fontSize: fontSize,
-                            ),
-                          ],
-                        ),
-                        Expanded(
-                          child: Container(),
-                        ),
-                        FlickSubtitleToggle(
-                          size: iconSize,
-                        ),
-                        SizedBox(
-                          width: iconSize / 2,
-                        ),
-                        FlickFullScreenToggle(
-                          size: iconSize,
-                        ),
-                      ],
-                    ),
+                          ),
+                          FlickTotalDuration(
+                            fontSize: fontSize,
+                          ),
+                        ],
+                      ),
+                      Expanded(
+                        child: Container(),
+                      ),
+                      FlickSubtitleToggle(
+                        size: iconSize,
+                      ),
+                      SizedBox(
+                        width: iconSize / 2,
+                      ),
+                      FlickFullScreenToggle(
+                        size: iconSize,
+                      ),
+                    ],
                   ),
                 ],
               ),

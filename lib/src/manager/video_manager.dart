@@ -81,14 +81,17 @@ class FlickVideoManager extends ChangeNotifier {
     _notify();
   }
 
-  _handleChangeVideo(VideoPlayerController newController,
-      {Duration? videoChangeDuration,
-      TimerCancelCallback? timerCancelCallback}) async {
+  _handleChangeVideo(
+    VideoPlayerController newController, {
+    Duration? videoChangeDuration,
+    TimerCancelCallback? timerCancelCallback,
+    Duration? startFrom,
+  }) async {
     // If videoChangeDuration is not null, start the autoPlayTimer.
     if (videoChangeDuration != null) {
       _timerCancelCallback = timerCancelCallback;
       _videoChangeCallback = () {
-        _changeVideo(newController);
+        _changeVideo(newController, startFrom: startFrom);
         _nextVideoAutoPlayTimer = null;
         _nextVideoAutoPlayDuration = null;
         _videoChangeCallback = null;
@@ -101,12 +104,15 @@ class FlickVideoManager extends ChangeNotifier {
       _notify();
     } else {
       // If videoChangeDuration is null, directly change the video.
-      _changeVideo(newController);
+      _changeVideo(newController, startFrom: startFrom);
     }
   }
 
   // Immediately change the video.
-  _changeVideo(VideoPlayerController newController) async {
+  _changeVideo(
+    VideoPlayerController newController, {
+    Duration? startFrom,
+  }) async {
     //  Change the videoPlayerController with the new controller,
     // notify the controller change and remove listeners from the old controller.
     VideoPlayerController? oldController = videoPlayerController;
@@ -139,6 +145,8 @@ class FlickVideoManager extends ChangeNotifier {
         videoPlayerController!.value.duration) {
       videoPlayerController!
           .seekTo(Duration(hours: 0, minutes: 0, seconds: 0, milliseconds: 0));
+    } else if (startFrom != null) {
+      videoPlayerController?.seekTo(startFrom);
     }
 
     if (autoPlay && ModalRoute.of(_flickManager._context!)!.isCurrent) {

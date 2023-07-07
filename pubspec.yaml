@@ -16,7 +16,7 @@ dependencies:
   provider: ^6.0.1
   wakelock:
   universal_html: ^2.0.8
-  dio: ^4.0.6
+  dio: ^5.2.1
   path_provider: ^2.0.11
 
 dev_dependencies:

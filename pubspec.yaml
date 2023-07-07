@@ -14,7 +14,18 @@ dependencies:
     sdk: flutter
   video_player: ^2.4.0
   provider: ^6.0.1
+# https://github.com/creativecreatorormaybenot/wakelock/pull/213
+# https://github.com/GeekyAnts/flick-video-player/issues/226
   wakelock:
+    git:
+      url: https://github.com/formigas/wakelock.git
+      path: wakelock/
+      ref: main
+  wakelock_windows:
+    git:
+      url: https://github.com/formigas/wakelock.git
+      path: wakelock_windows/
+      ref: main
   universal_html: ^2.0.8
   dio: ^5.2.1
   path_provider: ^2.0.11
@@ -26,16 +37,3 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-# https://github.com/GeekyAnts/flick-video-player/issues/226
-# https://github.com/creativecreatorormaybenot/wakelock/pull/213
-dependency_overrides:
-  wakelock:
-    git:
-      url: https://github.com/formigas/wakelock.git
-      path: wakelock/
-      ref: main
-  wakelock_windows:
-    git:
-      url: https://github.com/formigas/wakelock.git
-      path: wakelock_windows/
-      ref: main

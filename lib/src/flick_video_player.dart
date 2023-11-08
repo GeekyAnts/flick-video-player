@@ -27,6 +27,7 @@ class FlickVideoPlayer extends StatefulWidget {
     this.wakelockEnabled = true,
     this.wakelockEnabledFullscreen = true,
     this.webKeyDownHandler = flickDefaultWebKeyDownHandler,
+    this.useRootOverlay = false
   }) : super(key: key);
 
   final FlickManager flickManager;
@@ -61,6 +62,9 @@ class FlickVideoPlayer extends StatefulWidget {
   /// Prevents the screen from turning off automatically in full-screen.
   final bool wakelockEnabledFullscreen;
 
+  /// Open video to fullscreen in nested route screen
+  final bool useRootOverlay;
+  
   /// Callback called on keyDown for web, used for keyboard shortcuts.
   final Function(KeyboardEvent, FlickManager) webKeyDownHandler;
 
@@ -72,10 +76,12 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
   late FlickManager flickManager;
   bool _isFullscreen = false;
   OverlayEntry? _overlayEntry;
+  late bool _useRootOverlay;
 
   @override
   void initState() {
     flickManager = widget.flickManager;
+    _useRootOverlay = widget.useRootOverlay;
     flickManager.registerContext(context);
     flickManager.flickControlManager!.addListener(listener);
     _setSystemUIOverlays();
@@ -138,7 +144,7 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
       );
     });
 
-    Overlay.of(context)!.insert(_overlayEntry!);
+    Overlay.of(context, rootOverlay: this._useRootOverlay)!.insert(_overlayEntry!);
   }
 
   _exitFullscreen() {

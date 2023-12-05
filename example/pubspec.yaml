@@ -16,13 +16,13 @@ version: 1.0.0+1
 publish_to: none
 
 environment:
-  sdk: '>=2.14.0 <3.0.0'
-  flutter: '>=2.10.0'
+  sdk: '>=2.14.0 <4.0.0'
+  flutter: '>=3.16.2'
 
 dependencies:
   flutter:
     sdk: flutter
-  visibility_detector: ^0.3.0
+  visibility_detector: ^0.4.0+2
   flick_video_player:
     path: '../'
   video_player: ^2.4.0

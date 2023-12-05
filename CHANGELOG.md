@@ -62,7 +62,10 @@ Updated dependencies
 
 Added option to immediately hide player controls in `FlickDisplayManager`
 
-Fix - Static analysis 
+Fix - Static analysis
 
+## 0.6.0
 
+Updated Flutter version to 3.16.
 
+Upgraded dependencies

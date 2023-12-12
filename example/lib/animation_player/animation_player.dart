@@ -27,7 +27,7 @@ class _AnimationPlayerState extends State<AnimationPlayer> {
     // String url = items[0]['trailer_url'];
     flickManager = FlickManager(
       videoPlayerController:
-          VideoPlayerController.network(items[0]['trailer_url']),
+          VideoPlayerController.networkUrl(Uri.parse(items[0]['trailer_url'])),
       onVideoEnd: () => dataManager.playNextVideo(
         Duration(seconds: 5),
       ),

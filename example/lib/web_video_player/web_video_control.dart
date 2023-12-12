@@ -32,8 +32,6 @@ class WebVideoControl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FlickVideoManager flickVideoManager =
-        Provider.of<FlickVideoManager>(context);
     return FlickShowControlsActionWeb(
       child: Stack(
         children: <Widget>[

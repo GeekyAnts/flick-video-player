@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flick_video_player/flick_video_player.dart';
-import 'package:provider/provider.dart';
 
 import 'data_manager.dart';
 

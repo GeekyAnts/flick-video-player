@@ -68,7 +68,7 @@ class _SamplePlayerState extends State<SamplePlayer> {
     super.initState();
     flickManager = FlickManager(
       videoPlayerController:
-          VideoPlayerController.network("url"),
+          VideoPlayerController.networkUrl(Uri.parse("url"),
     );
   }
 

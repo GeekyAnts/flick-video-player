@@ -28,7 +28,7 @@ class DataManager {
   skipToNextVideo([Duration? duration]) {
     if (hasNextVideo()) {
       flickManager.handleChangeVideo(
-          VideoPlayerController.network(urls[currentPlaying + 1]),
+          VideoPlayerController.networkUrl(Uri.parse(urls[currentPlaying + 1])),
           videoChangeDuration: duration);
 
       currentPlaying++;
@@ -39,7 +39,7 @@ class DataManager {
     if (hasPreviousVideo()) {
       currentPlaying--;
       flickManager.handleChangeVideo(
-          VideoPlayerController.network(urls[currentPlaying]));
+          VideoPlayerController.networkUrl(Uri.parse(urls[currentPlaying])));
     }
   }
 

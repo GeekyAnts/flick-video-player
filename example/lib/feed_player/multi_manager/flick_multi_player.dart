@@ -29,7 +29,7 @@ class _FlickMultiPlayerState extends State<FlickMultiPlayer> {
   @override
   void initState() {
     flickManager = FlickManager(
-      videoPlayerController: VideoPlayerController.network(widget.url)
+      videoPlayerController: VideoPlayerController.networkUrl(Uri.parse(widget.url))
         ..setLooping(true),
       autoPlay: false,
     );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flick_video_player/flick_video_player.dart';
-import 'package:provider/provider.dart';
 
 import 'data_manager.dart';
 
@@ -32,8 +31,6 @@ class WebVideoControl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FlickVideoManager flickVideoManager =
-        Provider.of<FlickVideoManager>(context);
     return FlickShowControlsActionWeb(
       child: Stack(
         children: <Widget>[

@@ -68,13 +68,15 @@ class FlickVideoPlayer extends StatefulWidget {
   _FlickVideoPlayerState createState() => _FlickVideoPlayerState();
 }
 
-class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
+class _FlickVideoPlayerState extends State<FlickVideoPlayer>
+    with WidgetsBindingObserver {
   late FlickManager flickManager;
   bool _isFullscreen = false;
   OverlayEntry? _overlayEntry;
 
   @override
   void initState() {
+    WidgetsBinding.instance.addObserver(this);
     flickManager = widget.flickManager;
     flickManager.registerContext(context);
     flickManager.flickControlManager!.addListener(listener);
@@ -100,7 +102,17 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
     if (widget.wakelockEnabled) {
       Wakelock.disable();
     }
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
+  }
+
+  @override
+  Future<bool> didPopRoute() async {
+    if (_overlayEntry != null) {
+      flickManager.flickControlManager!.exitFullscreen();
+      return true;
+    }
+    return false;
   }
 
   // Listener on [FlickControlManager],
@@ -198,18 +210,9 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () {
-        if (_overlayEntry != null) {
-          flickManager.flickControlManager!.exitFullscreen();
-          return Future.value(false);
-        }
-        return Future.value(true);
-      },
-      child: FlickManagerBuilder(
-        flickManager: flickManager,
-        child: widget.flickVideoWithControls,
-      ),
+    return FlickManagerBuilder(
+      flickManager: flickManager,
+      child: widget.flickVideoWithControls,
     );
   }
 }

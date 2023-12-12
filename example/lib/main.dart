@@ -70,21 +70,23 @@ class _ExamplesState extends State<Examples> {
   }
 
   Widget _buildWebView() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Expanded(child: WebVideoPlayer()),
-        Container(
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Text('Flick video player',
-                style: TextStyle(
-                  color: Color.fromRGBO(100, 109, 236, 1),
-                  fontWeight: FontWeight.bold,
-                )),
-          ),
-        )
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          WebVideoPlayer(),
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text('Flick video player',
+                  style: TextStyle(
+                    color: Color.fromRGBO(100, 109, 236, 1),
+                    fontWeight: FontWeight.bold,
+                  )),
+            ),
+          )
+        ],
+      ),
     );
   }
 

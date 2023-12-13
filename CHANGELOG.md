@@ -69,3 +69,11 @@ Fix - Static analysis
 Updated Flutter version to 3.16.
 
 Upgraded dependencies
+
+## 0.7.0
+
+Fix - pub.dev warnings
+
+Fix - Deprecated widgets
+
+Fix - Web full screen issue.

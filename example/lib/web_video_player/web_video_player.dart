@@ -23,7 +23,7 @@ class _WebVideoPlayerState extends State<WebVideoPlayer> {
     super.initState();
     flickManager = FlickManager(
       videoPlayerController:
-          VideoPlayerController.network(mockData["items"][1]["trailer_url"]),
+          VideoPlayerController.networkUrl(Uri.parse(mockData["items"][1]["trailer_url"])),
     );
     List<String> urls = (mockData["items"] as List)
         .map<String>((item) => item["trailer_url"])

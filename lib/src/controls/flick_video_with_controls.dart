@@ -87,7 +87,7 @@ class FlickVideoWithControls extends StatefulWidget {
   get videoPlayerController => null;
 
   @override
-  _FlickVideoWithControlsState createState() => _FlickVideoWithControlsState();
+  State<FlickVideoWithControls> createState() => _FlickVideoWithControlsState();
 }
 
 class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {

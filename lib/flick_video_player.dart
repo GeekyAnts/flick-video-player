@@ -30,7 +30,6 @@ export './src/widgets/flick_native_video_player.dart';
 export './src/widgets/helpers/auto_play_timer_progress/auto_play_timer_progress.dart';
 export './src/widgets/helpers/auto_play_timer_progress/auto_play_timer_progress_colors.dart';
 
-
 export './src/controls/flick_video_with_controls.dart';
 export './src/controls/flick_portrait_controls.dart';
 export './src/controls/flick_landscape_controls.dart';

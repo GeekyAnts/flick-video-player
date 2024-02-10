@@ -14,7 +14,8 @@ dependencies:
     sdk: flutter
   video_player: ^2.8.1
   provider: ^6.1.1
-  wakelock: ^0.6.2
+  package_info_plus: ^5.0.1
+  wakelock_plus: ^1.1.4
   universal_html: ^2.2.4
   dio: ^5.4.0
   path_provider: ^2.1.1

@@ -3,12 +3,7 @@ import 'package:flick_video_player/flick_video_player.dart';
 
 /// Default portrait controls.
 class FlickPortraitControls extends StatelessWidget {
-  const FlickPortraitControls(
-      {Key? key,
-      this.iconSize = 20,
-      this.fontSize = 12,
-      this.progressBarSettings})
-      : super(key: key);
+  const FlickPortraitControls({Key? key, this.iconSize = 20, this.fontSize = 12, this.progressBarSettings, this.showFullScreenButton = true}) : super(key: key);
 
   /// Icon size.
   ///
@@ -19,6 +14,9 @@ class FlickPortraitControls extends StatelessWidget {
   ///
   /// This size is used for all the text.
   final double fontSize;
+
+  /// Props for show/hide full screen button
+  final bool showFullScreenButton;
 
   /// [FlickProgressBarSettings] settings.
   final FlickProgressBarSettings? progressBarSettings;
@@ -82,8 +80,7 @@ class FlickPortraitControls extends StatelessWidget {
                           FlickAutoHideChild(
                             child: Text(
                               ' / ',
-                              style: TextStyle(
-                                  color: Colors.white, fontSize: fontSize),
+                              style: TextStyle(color: Colors.white, fontSize: fontSize),
                             ),
                           ),
                           FlickTotalDuration(
@@ -100,9 +97,11 @@ class FlickPortraitControls extends StatelessWidget {
                       SizedBox(
                         width: iconSize / 2,
                       ),
-                      FlickFullScreenToggle(
-                        size: iconSize,
-                      ),
+                      showFullScreenButton
+                          ? FlickFullScreenToggle(
+                              size: iconSize,
+                            )
+                          : SizedBox.shrink()
                     ],
                   ),
                 ],

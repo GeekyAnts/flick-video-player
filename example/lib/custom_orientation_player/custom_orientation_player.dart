@@ -44,7 +44,8 @@ class _CustomOrientationPlayerState extends State<CustomOrientationPlayer> {
   }
 
   skipToVideo(String url) {
-    flickManager.handleChangeVideo(VideoPlayerController.networkUrl(Uri.parse(url)));
+    flickManager
+        .handleChangeVideo(VideoPlayerController.networkUrl(Uri.parse(url)));
   }
 
   @override

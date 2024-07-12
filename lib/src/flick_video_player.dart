@@ -74,7 +74,8 @@ class FlickVideoPlayer extends StatefulWidget {
   _FlickVideoPlayerState createState() => _FlickVideoPlayerState();
 }
 
-class _FlickVideoPlayerState extends State<FlickVideoPlayer> with WidgetsBindingObserver {
+class _FlickVideoPlayerState extends State<FlickVideoPlayer>
+    with WidgetsBindingObserver {
   late FlickManager flickManager;
   bool _isFullscreen = false;
   OverlayEntry? _overlayEntry;
@@ -95,7 +96,8 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> with WidgetsBinding
     }
 
     if (kIsWeb) {
-      document.documentElement?.onFullscreenChange.listen(_webFullscreenListener);
+      document.documentElement?.onFullscreenChange
+          .listen(_webFullscreenListener);
       document.documentElement?.onKeyDown.listen(_webKeyListener);
     }
 
@@ -126,7 +128,8 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> with WidgetsBinding
   void listener() async {
     if (flickManager.flickControlManager!.isFullscreen && !_isFullscreen) {
       _switchToFullscreen();
-    } else if (_isFullscreen && !flickManager.flickControlManager!.isFullscreen) {
+    } else if (_isFullscreen &&
+        !flickManager.flickControlManager!.isFullscreen) {
       _exitFullscreen();
     }
   }
@@ -153,7 +156,8 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> with WidgetsBinding
         return Scaffold(
           body: FlickManagerBuilder(
             flickManager: flickManager,
-            child: widget.flickVideoWithControlsFullscreen ?? widget.flickVideoWithControls,
+            child: widget.flickVideoWithControlsFullscreen ??
+                widget.flickVideoWithControls,
           ),
         );
       });
@@ -189,9 +193,11 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> with WidgetsBinding
 
   _setPreferredOrientation() {
     // when aspect ratio is less than 1 , video will be played in portrait mode and orientation will not be changed.
-    var aspectRatio = widget.flickManager.flickVideoManager!.videoPlayerValue!.aspectRatio;
+    var aspectRatio =
+        widget.flickManager.flickVideoManager!.videoPlayerValue!.aspectRatio;
     if (_isFullscreen && aspectRatio >= 1) {
-      SystemChrome.setPreferredOrientations(widget.preferredDeviceOrientationFullscreen);
+      SystemChrome.setPreferredOrientations(
+          widget.preferredDeviceOrientationFullscreen);
     } else {
       SystemChrome.setPreferredOrientations(widget.preferredDeviceOrientation);
     }
@@ -199,9 +205,11 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> with WidgetsBinding
 
   _setSystemUIOverlays() {
     if (_isFullscreen) {
-      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: widget.systemUIOverlayFullscreen);
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+          overlays: widget.systemUIOverlayFullscreen);
     } else {
-      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: widget.systemUIOverlay);
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+          overlays: widget.systemUIOverlay);
     }
   }
 
@@ -209,7 +217,8 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> with WidgetsBinding
     final isFullscreen = (window.screenTop == 0 && window.screenY == 0);
     if (isFullscreen && !flickManager.flickControlManager!.isFullscreen) {
       flickManager.flickControlManager!.enterFullscreen();
-    } else if (!isFullscreen && flickManager.flickControlManager!.isFullscreen) {
+    } else if (!isFullscreen &&
+        flickManager.flickControlManager!.isFullscreen) {
       flickManager.flickControlManager!.exitFullscreen();
     }
   }

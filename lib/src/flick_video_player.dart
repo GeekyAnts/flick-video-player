@@ -75,8 +75,18 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
 
   @override
   void initState() {
+    super.initState();
+
     flickManager = widget.flickManager;
-    flickManager.registerContext(context);
+
+    // Register context and perform initialization in post-frame callback
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      flickManager.registerContext(context);
+      _initializeFlickManager();
+    });
+  }
+
+  void _initializeFlickManager() {
     flickManager.flickControlManager!.addListener(listener);
     _setSystemUIOverlays();
     _setPreferredOrientation();
@@ -90,8 +100,6 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer> {
           .listen(_webFullscreenListener);
       document.documentElement?.onKeyDown.listen(_webKeyListener);
     }
-
-    super.initState();
   }
 
   @override

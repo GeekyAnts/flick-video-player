@@ -120,17 +120,19 @@ class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
             child: Stack(
               children: <Widget>[
                 Center(
-                  child: FlickNativeVideoPlayer(
-                    videoPlayerController: _videoPlayerController,
-                    fit: widget.videoFit,
-                    aspectRatioWhenLoading: widget.aspectRatioWhenLoading,
-                  ),
+                  child: _videoPlayerController != null
+                      ? FlickNativeVideoPlayer(
+                          videoPlayerController: _videoPlayerController!,
+                          fit: widget.videoFit,
+                          aspectRatioWhenLoading: widget.aspectRatioWhenLoading,
+                        )
+                      : widget.playerLoadingFallback,
                 ),
                 Positioned.fill(
                   child: Stack(
                     alignment: Alignment.bottomCenter,
                     children: <Widget>[
-                      _videoPlayerController!.closedCaptionFile != null &&
+                      _videoPlayerController?.closedCaptionFile != null &&
                               _showVideoCaption
                           ? Positioned(
                               bottom: 5,
@@ -148,7 +150,9 @@ class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
                         widget.playerLoadingFallback,
                       if (_videoPlayerController?.value.hasError == true)
                         widget.playerErrorFallback,
-                      widget.controls ?? Container(),
+                      if (_videoPlayerController != null &&
+                          _videoPlayerController!.value.isInitialized)
+                        widget.controls ?? Container(),
                     ],
                   ),
                 ),

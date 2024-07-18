@@ -20,8 +20,8 @@ class _LandscapePlayerState extends State<LandscapePlayer> {
   void initState() {
     super.initState();
     flickManager = FlickManager(
-        videoPlayerController:
-            VideoPlayerController.network(mockData["items"][2]["trailer_url"]));
+        videoPlayerController: VideoPlayerController.networkUrl(
+            Uri.parse(mockData["items"][2]["trailer_url"])));
   }
 
   @override

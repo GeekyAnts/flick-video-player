@@ -62,11 +62,11 @@ class FlickDisplayManager extends ChangeNotifier {
 
       _showPlayerControlsTimer = Timer(
           _flickManager!.getPlayerControlsTimeout(
-            errorInVideo: _flickManager!.flickVideoManager!.errorInVideo,
+            errorInVideo: _flickManager.flickVideoManager!.errorInVideo,
             isVideoInitialized:
-                _flickManager!.flickVideoManager!.isVideoInitialized,
-            isPlaying: _flickManager!.flickVideoManager!.isPlaying,
-            isVideoEnded: _flickManager!.flickVideoManager!.isVideoEnded,
+                _flickManager.flickVideoManager!.isVideoInitialized,
+            isPlaying: _flickManager.flickVideoManager!.isPlaying,
+            isVideoEnded: _flickManager.flickVideoManager!.isVideoEnded,
           ), () {
         _showPlayerControls = false;
         _notify();

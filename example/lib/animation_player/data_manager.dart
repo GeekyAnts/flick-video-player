@@ -29,7 +29,7 @@ class AnimationPlayerDataManager {
       }
 
       flickManager.handleChangeVideo(
-          VideoPlayerController.network(nextVideoUrl),
+          VideoPlayerController.networkUrl(Uri.parse(nextVideoUrl)),
           videoChangeDuration: duration, timerCancelCallback: (bool playNext) {
         videoChangeTimer.cancel();
         if (playNext) {

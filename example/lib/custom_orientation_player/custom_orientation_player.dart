@@ -27,8 +27,8 @@ class _CustomOrientationPlayerState extends State<CustomOrientationPlayer> {
   void initState() {
     super.initState();
     flickManager = FlickManager(
-        videoPlayerController: VideoPlayerController.network(
-          urls[0],
+        videoPlayerController: VideoPlayerController.networkUrl(
+          Uri.parse(urls[0]),
         ),
         onVideoEnd: () {
           dataManager.skipToNextVideo(Duration(seconds: 5));
@@ -44,7 +44,8 @@ class _CustomOrientationPlayerState extends State<CustomOrientationPlayer> {
   }
 
   skipToVideo(String url) {
-    flickManager.handleChangeVideo(VideoPlayerController.network(url));
+    flickManager
+        .handleChangeVideo(VideoPlayerController.networkUrl(Uri.parse(url)));
   }
 
   @override

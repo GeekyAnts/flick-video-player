@@ -1,9 +1,9 @@
-import 'package:flick_video_player/src/utils/web_key_bindings.dart';
-import 'package:universal_html/html.dart';
 import 'package:flick_video_player/flick_video_player.dart';
+import 'package:flick_video_player/src/utils/web_key_bindings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:universal_html/html.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 class FlickVideoPlayer extends StatefulWidget {
@@ -27,6 +27,7 @@ class FlickVideoPlayer extends StatefulWidget {
     this.wakelockEnabled = true,
     this.wakelockEnabledFullscreen = true,
     this.webKeyDownHandler = flickDefaultWebKeyDownHandler,
+    this.overlay,
   }) : super(key: key);
 
   final FlickManager flickManager;
@@ -63,6 +64,11 @@ class FlickVideoPlayer extends StatefulWidget {
 
   /// Callback called on keyDown for web, used for keyboard shortcuts.
   final Function(KeyboardEvent, FlickManager) webKeyDownHandler;
+
+  /// The [OverlayState] that is used to show the fullscreen player on.
+  ///
+  /// Defaults to the overlay from `Overlay.of(context)`.
+  final OverlayState? overlay;
 
   @override
   _FlickVideoPlayerState createState() => _FlickVideoPlayerState();
@@ -164,7 +170,10 @@ class _FlickVideoPlayerState extends State<FlickVideoPlayer>
         );
       });
 
-      Overlay.of(context).insert(_overlayEntry!);
+      if (widget.overlay != null)
+        widget.overlay!.insert(_overlayEntry!);
+      else
+        Overlay.of(context).insert(_overlayEntry!);
     }
   }
 

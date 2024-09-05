@@ -85,3 +85,7 @@ Updated wakelock to wakelock_plus: ^1.1.4
 Updated video_player to latest version video_player: ^2.8.6
 
 Fix - Formatting
+
+## 0.9.0
+
+Fix - Registering the context and initializes the FlickManager after the widget is built to ensure the context is available.

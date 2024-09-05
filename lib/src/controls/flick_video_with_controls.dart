@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flick_video_player/flick_video_player.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
 
@@ -40,6 +40,7 @@ class FlickVideoWithControls extends StatefulWidget {
       color: Colors.white,
       fontSize: 12,
     ),
+    this.watermark,
   }) : super(key: key);
 
   /// Create custom controls or use any of these [FlickPortraitControls], [FlickLandscapeControls]
@@ -84,6 +85,11 @@ class FlickVideoWithControls extends StatefulWidget {
   /// If false videoPlayerController will not be updated.
   final bool willVideoPlayerControllerChange;
 
+  /// A widget to always display over the video.
+  ///
+  /// Use [Positioned], [Align] or [Center] to position the watermark.
+  final Widget? watermark;
+
   get videoPlayerController => null;
 
   @override
@@ -120,17 +126,20 @@ class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
             child: Stack(
               children: <Widget>[
                 Center(
-                  child: FlickNativeVideoPlayer(
-                    videoPlayerController: _videoPlayerController,
-                    fit: widget.videoFit,
-                    aspectRatioWhenLoading: widget.aspectRatioWhenLoading,
-                  ),
+                  child: _videoPlayerController != null
+                      ? FlickNativeVideoPlayer(
+                          videoPlayerController: _videoPlayerController!,
+                          fit: widget.videoFit,
+                          aspectRatioWhenLoading: widget.aspectRatioWhenLoading,
+                        )
+                      : widget.playerLoadingFallback,
                 ),
+                if (widget.watermark != null) widget.watermark!,
                 Positioned.fill(
                   child: Stack(
                     alignment: Alignment.bottomCenter,
                     children: <Widget>[
-                      _videoPlayerController!.closedCaptionFile != null &&
+                      _videoPlayerController?.closedCaptionFile != null &&
                               _showVideoCaption
                           ? Positioned(
                               bottom: 5,
@@ -148,7 +157,9 @@ class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
                         widget.playerLoadingFallback,
                       if (_videoPlayerController?.value.hasError == true)
                         widget.playerErrorFallback,
-                      widget.controls ?? Container(),
+                      if (_videoPlayerController != null &&
+                          _videoPlayerController!.value.isInitialized)
+                        widget.controls ?? Container(),
                     ],
                   ),
                 ),

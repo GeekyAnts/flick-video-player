@@ -83,10 +83,14 @@ class AnimationPlayerPortraitVideoControls extends StatelessWidget {
                             showIfVideoNotInitialized: false,
                             child: FlickSoundToggle(),
                           ),
-                          FlickAutoHideChild(
-                            autoHide: false,
-                            showIfVideoNotInitialized: false,
-                            child: FlickFullScreenToggle(),
+                          SafeArea(
+                            child: FlickAutoHideChild(
+                              autoHide: false,
+                              showIfVideoNotInitialized: false,
+                              child: FlickFullScreenToggle(
+                                size: 100,
+                              ),
+                            ),
                           ),
                         ],
                       ),

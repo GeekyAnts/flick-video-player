@@ -66,19 +66,21 @@ class FlickFullScreenToggle extends StatelessWidget {
         ? exitFullScreenWidget
         : enterFullScreenWidget;
 
-    return GestureDetector(
-      key: key,
-      onTap: () {
-        if (toggleFullscreen != null) {
-          toggleFullscreen!();
-        } else {
-          controlManager.toggleFullscreen();
-        }
-      },
-      child: Container(
-        padding: padding,
-        decoration: decoration,
-        child: child,
+    return SafeArea(
+      child: GestureDetector(
+        key: key,
+        onTap: () {
+          if (toggleFullscreen != null) {
+            toggleFullscreen!();
+          } else {
+            controlManager.toggleFullscreen();
+          }
+        },
+        child: Container(
+          padding: padding,
+          decoration: decoration,
+          child: child,
+        ),
       ),
     );
   }

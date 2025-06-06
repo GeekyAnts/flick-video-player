@@ -34,6 +34,8 @@ class FlickVideoWithControls extends StatefulWidget {
       color: Colors.white,
       fontSize: 12,
     ),
+    this.backgroundImage,
+    this.backgroundImageFit = BoxFit.cover,
     this.aspectRatioWhenLoading = 16 / 9,
     this.willVideoPlayerControllerChange = true,
     this.closedCaptionTextStyle = const TextStyle(
@@ -54,6 +56,12 @@ class FlickVideoWithControls extends StatefulWidget {
   /// Property passed to [FlickVideoPlayer]
   final BoxFit videoFit;
   final Color backgroundColor;
+
+  /// Used in [FlickVideoPlayer] background image decoration.
+  final Image? backgroundImage;
+
+  /// The fit for video the background image.
+  final BoxFit backgroundImageFit;
 
   /// Used in [DefaultTextStyle]
   ///
@@ -114,7 +122,15 @@ class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
       data: widget.iconThemeData,
       child: LayoutBuilder(builder: (context, size) {
         return Container(
-          color: widget.backgroundColor,
+          decoration: BoxDecoration(
+            color: widget.backgroundColor,
+            image: widget.backgroundImage == null
+                ? null
+                : DecorationImage(
+                    image: widget.backgroundImage!.image,
+                    fit: widget.backgroundImageFit,
+                  ),
+          ),
           child: DefaultTextStyle(
             style: widget.textStyle,
             child: Stack(

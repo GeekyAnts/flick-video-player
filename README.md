@@ -30,6 +30,16 @@ The [video_player](https://pub.dev/packages/video_player) plugin gives low level
 | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | Web player <br>[Video](https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/demo/web_player.mp4?raw=true) <br>[Code](https://github.com/GeekyAnts/flick-video-player/tree/master/example/lib/web_video_player) |
 
+
+## About
+
+   Flick Video Player is a Flutter video player package by
+   [GeekyAnts](https://geekyants.com?utm_source=github&utm_medium=opensource&utm_campaign=flick-video-player).
+
+   Building a video streaming app? Our
+   [Flutter developers](https://geekyants.com/hire-flutter-developers?utm_source=github&utm_medium=opensource&utm_campaign=flick-video-player)
+   can help. [Get in touch](https://geekyants.com/hire?utm_source=github&utm_medium=opensource&utm_campaign=flick-video-player).
+
 ### Example
 
 Please run the app in the example/ folder to start playing!

@@ -35,6 +35,7 @@ class FlickVideoWithControls extends StatefulWidget {
       fontSize: 12,
     ),
     this.aspectRatioWhenLoading = 16 / 9,
+    this.aspectRatio,
     this.willVideoPlayerControllerChange = true,
     this.closedCaptionTextStyle = const TextStyle(
       color: Colors.white,
@@ -81,6 +82,8 @@ class FlickVideoWithControls extends StatefulWidget {
   /// Once the video is initialized, video determines size taken.
   final double aspectRatioWhenLoading;
 
+  final double? aspectRatio;
+
   /// If false videoPlayerController will not be updated.
   final bool willVideoPlayerControllerChange;
 
@@ -125,6 +128,7 @@ class _FlickVideoWithControlsState extends State<FlickVideoWithControls> {
                           videoPlayerController: _videoPlayerController!,
                           fit: widget.videoFit,
                           aspectRatioWhenLoading: widget.aspectRatioWhenLoading,
+                          aspectRatio: widget.aspectRatio,
                         )
                       : widget.playerLoadingFallback,
                 ),

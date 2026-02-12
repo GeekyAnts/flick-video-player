@@ -102,8 +102,10 @@ class AnimationPlayerLandscapeControls extends StatelessWidget {
                         Expanded(
                           child: Container(),
                         ),
-                        FlickFullScreenToggle(
-                          size: 30,
+                        SafeArea(
+                          child: FlickFullScreenToggle(
+                            size: 100,
+                          ),
                         ),
                       ],
                     ),

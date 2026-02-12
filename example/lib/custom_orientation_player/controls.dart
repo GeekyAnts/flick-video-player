@@ -107,8 +107,10 @@ class CustomOrientationControls extends StatelessWidget {
                       Expanded(
                         child: Container(),
                       ),
-                      FlickFullScreenToggle(
-                        size: iconSize,
+                      SafeArea(
+                        child: FlickFullScreenToggle(
+                          size: 100,
+                        ),
                       ),
                     ],
                   ),
